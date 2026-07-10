@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 import { getCvHref, languages, translations, type Language } from "./i18n";
 
@@ -139,12 +140,15 @@ export default function Home() {
 
             <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
               {proyectosDestacados.map((proyecto) => (
-                <div
+                <Link
                   key={proyecto.id}
+                  href={`/proyectos/${proyecto.id}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="group relative h-80 overflow-hidden rounded-2xl border border-slate-200/60 bg-slate-900 shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
                 >
                   <div
-                    className="absolute inset-0 bg-cover bg-center opacity-40 transition-opacity group-hover:opacity-50"
+                    className="absolute inset-0 bg-cover bg-center opacity-70 transition-opacity group-hover:opacity-50"
                     style={{ backgroundImage: `url(${proyecto.imagen})` }}
                   >
                     <div className="h-full w-full bg-gradient-to-br from-blue-950 to-slate-950" />
@@ -155,7 +159,7 @@ export default function Home() {
                   <div className="absolute inset-0 flex flex-col justify-end p-6">
                     <div className="space-y-2">
                       <div className="flex flex-wrap gap-2">
-                        {t.projects.items[proyecto.id - 1].tags.map((tag, index) => (
+                        {t.projects.items[proyecto.id - 1].tags.map((tag) => (
                           <span
                             key={`${proyecto.id}-${tag}`}
                             className="rounded border border-blue-500/30 bg-blue-500/20 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-blue-300"
@@ -175,7 +179,7 @@ export default function Home() {
                       </p>
                     </div>
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
           </section>
