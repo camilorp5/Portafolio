@@ -8,6 +8,8 @@ export type Language = (typeof languages)[number]["code"];
 
 export const translations = {
   es: {
+    languagelabel: "Puedes hablar conmigo en:",
+
     navigation: {
       home: "01 Home",
       publications: "02 Publicaciones",
@@ -58,6 +60,7 @@ export const translations = {
     },
   },
   en: {
+    languagelabel: "You can talk to me in:",
     navigation: {
       home: "01 Home",
       publications: "02 Publications",
@@ -108,6 +111,7 @@ export const translations = {
     },
   },
   pt: {
+    languagelabel: "Você pode falar comigo em:",
     navigation: {
       home: "01 Início",
       publications: "02 Publicações",

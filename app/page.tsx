@@ -39,7 +39,7 @@ export default function Home() {
               Select language
             </label>
             <span className="text-sm font-medium text-slate-700">
-              Puedes hablar conmigo en:
+              {t.languagelabel}
             </span>
             <select
               id="language-selector"
