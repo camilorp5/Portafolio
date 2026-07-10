@@ -38,6 +38,9 @@ export default function Home() {
             <label className="sr-only" htmlFor="language-selector">
               Select language
             </label>
+            <span className="text-sm font-medium text-slate-700">
+              Puedes hablar conmigo en:
+            </span>
             <select
               id="language-selector"
               value={language}
