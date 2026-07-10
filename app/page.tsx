@@ -15,11 +15,11 @@ const tabs: Array<{ id: TabId; key: keyof (typeof translations)[Language]["navig
 const proyectosDestacados = [
   {
     id: 1,
-    imagen: "/proyectos/proyecto1.jpg",
+    imagen: "/proyectos/proyecto1.png",
   },
   {
     id: 2,
-    imagen: "/proyectos/proyecto2.jpg",
+    imagen: "/proyectos/proyecto2.png",
   },
 ];
 
@@ -137,7 +137,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
               {proyectosDestacados.map((proyecto) => (
                 <div
                   key={proyecto.id}
