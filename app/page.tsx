@@ -143,15 +143,13 @@ export default function Home() {
                 <Link
                   key={proyecto.id}
                   href={`/proyectos/${proyecto.id}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
                   className="group relative h-80 overflow-hidden rounded-2xl border border-slate-200/60 bg-slate-900 shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
                 >
                   <div
-                    className="absolute inset-0 bg-cover bg-center opacity-70 transition-opacity group-hover:opacity-50"
+                    className="absolute inset-0 bg-cover bg-center opacity-100 transition-opacity group-hover:opacity-50"
                     style={{ backgroundImage: `url(${proyecto.imagen})` }}
                   >
-                    <div className="h-full w-full bg-gradient-to-br from-blue-950 to-slate-950" />
+                    <div className="h-full w-full bg-gradient-to-br from-blue-950 to-slate-950 opacity-50" />
                   </div>
 
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/60 to-transparent" />
