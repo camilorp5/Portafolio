@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import { getCvHref, languages, translations, type Language } from "./i18n";
 
 type TabId = "home" | "publications" | "about" | "chatbot";
@@ -36,21 +36,12 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  // Referencia para scroll automático
-  const messagesEndRef = useRef<HTMLDivElement | null>(null);
-
   const apiUrl = "https://chatbot-rag-244902663860.us-central1.run.app/chat";
 
-  // Efecto para bajar el scroll automáticamente
-  useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages, loading]);
-
-  async function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: any) {
     e.preventDefault();
     const text = question.trim();
-    if (!text || loading) return;
-
+    if (!text) return;
     setError(null);
     setLoading(true);
     setMessages((m) => [...m, { sender: 'user', text }]);
@@ -63,12 +54,9 @@ export default function Home() {
         body: JSON.stringify({ pregunta: text }),
       });
 
-      if (!res.ok) {
-        throw new Error(`Error ${res.status}: No se pudo obtener respuesta del servidor.`);
-      }
-
       const data = await res.json();
-      const botText = data?.respuesta || "No se recibió respuesta válida.";
+      // Try common response fields
+      const botText = data?.respuesta || data?.answer || data?.text || (typeof data === 'string' ? data : JSON.stringify(data));
       setMessages((m) => [...m, { sender: 'bot', text: String(botText) }]);
     } catch (err: any) {
         console.error("ERROR:", err);
@@ -246,24 +234,12 @@ export default function Home() {
                 ) : (
                   messages.map((m, idx) => (
                     <div key={idx} className={`mb-3 flex ${m.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
-                      <div className={`max-w-[80%] whitespace-pre-wrap rounded-xl px-4 py-2 text-sm ${m.sender === 'user' ? 'bg-blue-700 text-white' : 'bg-slate-100 text-slate-900'}`}>
+                      <div className={`max-w-[80%] rounded-xl px-4 py-2 ${m.sender === 'user' ? 'bg-blue-700 text-white' : 'bg-slate-100 text-slate-900'}`}>
                         {m.text}
                       </div>
                     </div>
                   ))
                 )}
-                
-                {/* Indicador visual de carga */}
-                {loading && (
-                  <div className="mb-3 flex justify-start">
-                    <div className="max-w-[80%] rounded-xl bg-slate-100 px-4 py-2 text-sm text-slate-500 italic">
-                      Demy está pensando...
-                    </div>
-                  </div>
-                )}
-                
-                {/* Elemento ancla para scroll automático */}
-                <div ref={messagesEndRef} />
               </div>
 
               <form onSubmit={handleSubmit} className="mt-auto flex gap-2">
@@ -271,14 +247,15 @@ export default function Home() {
                   type="text"
                   value={question}
                   onChange={(e) => setQuestion(e.target.value)}
+                  onKeyDown={(e) => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); handleSubmit(e); } }}
                   placeholder={t.placeholders.chatbot.inputPlaceholder || 'Escribe tu pregunta...'}
                   className="flex-1 rounded-xl border border-slate-200 px-4 py-2 text-sm outline-none focus:ring-2 focus:ring-blue-200"
                 />
-                <button type="submit" disabled={loading || !question.trim()} className="rounded-xl bg-blue-700 px-4 py-2 text-sm font-medium text-white transition hover:bg-blue-800 disabled:opacity-50">
+                <button type="submit" disabled={loading} className="rounded-xl bg-blue-700 px-4 py-2 text-white disabled:opacity-60">
                   {loading ? 'Enviando...' : 'Enviar'}
                 </button>
               </form>
-              {error && <p className="mt-1 text-xs text-red-600">{error}</p>}
+              {error && <p className="mt-2 text-sm text-red-600">{error}</p>}
             </div>
           </div>
         </section>
