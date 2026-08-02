@@ -59,8 +59,9 @@ export default function Home() {
       const botText = data?.respuesta || data?.answer || data?.text || (typeof data === 'string' ? data : JSON.stringify(data));
       setMessages((m) => [...m, { sender: 'bot', text: String(botText) }]);
     } catch (err: any) {
-      setError('Error al comunicarse con la API.');
-      setMessages((m) => [...m, { sender: 'bot', text: 'Lo siento, ocurrió un error al obtener la respuesta.' }]);
+        console.error("ERROR:", err);
+        setError(err.message || "Error al comunicarse con la API.");
+        setMessages((m) => [...m, { sender: 'bot', text: 'Lo siento, ocurrió un error al obtener la respuesta.' }]);
     } finally {
       setLoading(false);
     }
