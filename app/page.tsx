@@ -36,7 +36,7 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const apiUrl = "https://chatbot-rag-244902663860.us-central1.run.app/";
+  const apiUrl = "https://chatbot-rag-244902663860.us-central1.run.app/chat";
 
   async function handleSubmit(e: any) {
     e.preventDefault();
