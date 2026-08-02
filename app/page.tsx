@@ -31,6 +31,41 @@ export default function Home() {
   const t = translations[language];
   const cvHref = getCvHref(language);
 
+  const [messages, setMessages] = useState<Array<{sender: 'user' | 'bot'; text: string}>>([]);
+  const [question, setQuestion] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const apiUrl = "https://chatbot-rag-244902663860.us-central1.run.app/";
+
+  async function handleSubmit(e: any) {
+    e.preventDefault();
+    const text = question.trim();
+    if (!text) return;
+    setError(null);
+    setLoading(true);
+    setMessages((m) => [...m, { sender: 'user', text }]);
+    setQuestion("");
+
+    try {
+      const res = await fetch(apiUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ pregunta: text }),
+      });
+
+      const data = await res.json();
+      // Try common response fields
+      const botText = data?.respuesta || data?.answer || data?.text || (typeof data === 'string' ? data : JSON.stringify(data));
+      setMessages((m) => [...m, { sender: 'bot', text: String(botText) }]);
+    } catch (err: any) {
+      setError('Error al comunicarse con la API.');
+      setMessages((m) => [...m, { sender: 'bot', text: 'Lo siento, ocurrió un error al obtener la respuesta.' }]);
+    } finally {
+      setLoading(false);
+    }
+  }
+
   return (
     <main className="min-h-screen bg-slate-50 text-slate-900 font-sans selection:bg-blue-500 selection:text-white">
       <header className="sticky top-0 z-30 border-b border-slate-200/80 bg-white/90 backdrop-blur">
@@ -182,29 +217,64 @@ export default function Home() {
             </div>
           </section>
         </>
+      ) : activeTab === "chatbot" ? (
+        <section className="mx-auto flex min-h-[70vh] max-w-3xl items-center justify-center px-6 py-20">
+          <div className="w-full rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+            <div className="mb-4">
+              <p className="text-sm font-semibold uppercase tracking-[0.3em] text-blue-700">04</p>
+              <h2 className="mt-2 text-2xl font-bold tracking-tight text-slate-900">{t.placeholders.chatbot.title}</h2>
+              <p className="mt-2 text-sm text-slate-600">{t.placeholders.chatbot.description}</p>
+            </div>
+
+            <div className="flex h-[60vh] flex-col gap-4">
+              <div className="flex-1 overflow-y-auto rounded-lg border border-slate-100 p-4" id="chat-messages">
+                {messages.length === 0 ? (
+                  <p className="text-sm text-slate-400">Escribe una pregunta en el cuadro de abajo y presiona Enviar.</p>
+                ) : (
+                  messages.map((m, idx) => (
+                    <div key={idx} className={`mb-3 flex ${m.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
+                      <div className={`max-w-[80%] rounded-xl px-4 py-2 ${m.sender === 'user' ? 'bg-blue-700 text-white' : 'bg-slate-100 text-slate-900'}`}>
+                        {m.text}
+                      </div>
+                    </div>
+                  ))
+                )}
+              </div>
+
+              <form onSubmit={handleSubmit} className="mt-auto flex gap-2">
+                <input
+                  type="text"
+                  value={question}
+                  onChange={(e) => setQuestion(e.target.value)}
+                  onKeyDown={(e) => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); handleSubmit(e); } }}
+                  placeholder={t.placeholders.chatbot.inputPlaceholder || 'Escribe tu pregunta...'}
+                  className="flex-1 rounded-xl border border-slate-200 px-4 py-2 text-sm outline-none focus:ring-2 focus:ring-blue-200"
+                />
+                <button type="submit" disabled={loading} className="rounded-xl bg-blue-700 px-4 py-2 text-white disabled:opacity-60">
+                  {loading ? 'Enviando...' : 'Enviar'}
+                </button>
+              </form>
+              {error && <p className="mt-2 text-sm text-red-600">{error}</p>}
+            </div>
+          </div>
+        </section>
       ) : (
         <section className="mx-auto flex min-h-[70vh] max-w-5xl items-center justify-center px-6 py-20">
           <div className="w-full rounded-3xl border border-slate-200 bg-white p-10 shadow-sm">
             <p className="text-sm font-semibold uppercase tracking-[0.3em] text-blue-700">
               {activeTab === "publications"
                 ? "02"
-                : activeTab === "about"
-                  ? "03"
-                  : "04"}
+                : "03"}
             </p>
             <h2 className="mt-4 text-3xl font-bold tracking-tight text-slate-900">
               {activeTab === "publications"
                 ? t.placeholders.publications.title
-                : activeTab === "about"
-                  ? t.placeholders.about.title
-                  : t.placeholders.chatbot.title}
+                : t.placeholders.about.title}
             </h2>
             <p className="mt-4 max-w-2xl text-lg text-slate-600">
               {activeTab === "publications"
                 ? t.placeholders.publications.description
-                : activeTab === "about"
-                  ? t.placeholders.about.description
-                  : t.placeholders.chatbot.description}
+                : t.placeholders.about.description}
             </p>
           </div>
         </section>

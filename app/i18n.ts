@@ -56,6 +56,7 @@ export const translations = {
       chatbot: {
         title: "Chatbot",
         description: "Aquí conectaremos el asistente personal basado en IA con el portafolio.",
+        inputPlaceholder: "Escribe tu pregunta..."
       },
     },
   },
@@ -107,6 +108,7 @@ export const translations = {
       chatbot: {
         title: "Chatbot",
         description: "This is where the personal AI assistant will be connected to the portfolio.",
+        inputPlaceholder: "Type your question..."
       },
     },
   },
@@ -158,6 +160,7 @@ export const translations = {
       chatbot: {
         title: "Chatbot",
         description: "Aqui conectaremos o assistente pessoal baseado em IA ao portfólio.",
+        inputPlaceholder: "Digite sua pergunta..."
       },
     },
   },
