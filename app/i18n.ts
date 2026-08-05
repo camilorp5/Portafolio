@@ -42,6 +42,12 @@ export const translations = {
             "Despliegue de agentes inteligentes que optimizan flujos de trabajo en entornos académicos.",
           tags: ["LangGraph", "Gemini", "Docker"],
         },
+        {
+          title: "Sistema de permanencia estudiantil",
+          description:
+            "Desarrollo de un sistema de recomendación para mejorar la retención estudiantil en universidades.",
+          tags: ["Python", "Gemini", "PowerBI"],
+        },
       ],
     },
     placeholders: {
@@ -93,6 +99,11 @@ export const translations = {
           description:
             "Deployment of intelligent agents that optimize workflows in academic environments.",
           tags: ["LangGraph", "Gemini", "Docker"],
+        },
+        {
+          "title": "Student Retention System",
+          "description": "Development of a recommendation system to improve student retention in universities.",
+          "tags": ["Python", "Gemini", "Power BI"]
         },
       ],
     },
@@ -146,6 +157,11 @@ export const translations = {
             "Implantação de agentes inteligentes que otimizam fluxos de trabalho em ambientes acadêmicos.",
           tags: ["LangGraph", "Gemini", "Docker"],
         },
+        {
+          "title": "Sistema de Permanência Estudantil",
+          "description": "Desenvolvimento de um sistema de recomendação para melhorar a permanência estudantil nas universidades.",
+          "tags": ["Python", "Gemini", "Power BI"]
+        }
       ],
     },
     placeholders: {

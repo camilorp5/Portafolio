@@ -23,6 +23,10 @@ const proyectosDestacados = [
     id: 2,
     imagen: "/proyectos/proyecto2.png",
   },
+  {
+    id: 3,
+    imagen: "/proyectos/proyecto2.png",
+  },
 ];
 
 export default function Home() {
