@@ -67,7 +67,7 @@ const esferaItems: SphereItem[] = [
   },
   {
     id: 5,
-    image: "/logosHabilidades/studio.svg",
+    image: "/logosHabilidades/Studio.svg",
     title: "Google Workspace Studio",
     description: "Dominio en automatización de procesos y desarrollo de soluciones con Google Workspace Studio.",
     size: 1.2,
@@ -81,7 +81,7 @@ const esferaItems: SphereItem[] = [
   },
   {
     id: 7,
-    image: "/logosHabilidades/googlecollab.png",
+    image: "/logosHabilidades/googlecollab.webp",
     title: "Google Colab",
     description: "Experiencia en enseñanza y desarrollo de proyectos de ML, DL y ciencia de datos en Google Colab.",
     size: 1.5,

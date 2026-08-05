@@ -133,10 +133,10 @@ export default function SphereTagCloud({
       <div className="absolute -inset-2 rounded-3xl bg-gradient-to-r from-blue-500/25 via-indigo-500/20 to-cyan-400/25 blur-xl pointer-events-none" />
 
       {/* Contenedor principal estilo tarjeta */}
-      <div className="relative w-full h-full rounded-3xl border border-slate-800 bg-transparent shadow-2xl overflow-hidden backdrop-blur-xl">
+      <div className="relative w-full h-full rounded-3xl border border-slate-800 bg-slate-50 shadow-2xl overflow-hidden backdrop-blur-xl">
         {/* Canvas 3D */}
         <Canvas
-          camera={{ position: [0, 0, 14], fov: 50 }}
+          camera={{ position: [0, 0, 20], fov: 50 }}
           gl={{ alpha: true }}
           style={{
             pointerEvents: selectedItem ? "none" : "auto",
