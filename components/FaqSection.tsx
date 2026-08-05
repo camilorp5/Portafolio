@@ -63,7 +63,7 @@ export const HorizontalScroller = ({
 
   return (
     <div className="scroller-mask relative w-full overflow-hidden group">
-      <div className={`flex ${animationClass}`} style={style}>
+      <div className={`flex ${animationClass} group-hover:[animation-play-state:paused]`} style={style}>
         <div className="flex flex-shrink-0 items-stretch justify-center gap-8 px-4">
           {children}
         </div>

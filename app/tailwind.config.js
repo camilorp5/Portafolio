@@ -24,3 +24,14 @@ module.exports = {
   },
   plugins: [],
 };
+
+module.exports = {
+  theme: {
+    extend: {
+      animation: {
+        'scroll-horizontal': 'scroll-horizontal var(--scroll-duration, 40s) linear infinite',
+        'scroll-horizontal-reverse': 'scroll-horizontal-reverse var(--scroll-duration, 40s) linear infinite',
+      },
+    },
+  },
+};
