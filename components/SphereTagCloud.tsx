@@ -60,15 +60,16 @@ function NodeItem({
           }}
           onMouseEnter={() => setHovered(true)}
           onMouseLeave={() => setHovered(false)}
-          className={`group relative cursor-pointer rounded-full p-1 transition-all duration-300 ${
-            hovered ? "scale-125 shadow-xl ring-4 ring-blue-500/50" : "scale-100 shadow-md"
+          className={`group relative cursor-pointer rounded-full p-0.5 transition-all duration-300 ${
+            hovered ? "scale-125 shadow-2xl ring-2 ring-blue-400" : "scale-100 shadow-md"
           }`}
           style={{
             width: `${nodeSize * 38}px`,
             height: `${nodeSize * 38}px`,
           }}
         >
-          <div className="w-full h-full rounded-full overflow-hidden border-2 border-white bg-slate-200">
+          {/* Imagen sin borde blanco */}
+          <div className="w-full h-full rounded-full overflow-hidden">
             <img
               src={item.image}
               alt={item.title}
@@ -128,36 +129,42 @@ export default function SphereTagCloud({
         ease: "easeInOut",
       }}
     >
-      {/* Canvas 3D */}
-      <Canvas
-        camera={{ position: [0, 0, 14], fov: 50 }}
-        gl={{ alpha: true }}
-        style={{
-          pointerEvents: selectedItem ? "none" : "auto",
-        }}
-      >
-        <ambientLight intensity={1.5} />
+      {/* Resplandor gráfico tipo tarjeta detrás del contenedor */}
+      <div className="absolute -inset-2 rounded-3xl bg-gradient-to-r from-blue-500/25 via-indigo-500/20 to-cyan-400/25 blur-xl pointer-events-none" />
 
-        <RotatingGroup paused={!!selectedItem}>
-          {items.map((item, index) => (
-            <NodeItem
-              key={item.id}
-              item={item}
-              position={positions[index]}
-              onClick={setSelectedItem}
-            />
-          ))}
-        </RotatingGroup>
+      {/* Contenedor principal estilo tarjeta */}
+      <div className="relative w-full h-full rounded-3xl border border-slate-800 bg-slate-950/90 shadow-2xl overflow-hidden backdrop-blur-xl">
+        {/* Canvas 3D */}
+        <Canvas
+          camera={{ position: [0, 0, 14], fov: 50 }}
+          gl={{ alpha: true }}
+          style={{
+            pointerEvents: selectedItem ? "none" : "auto",
+          }}
+        >
+          <ambientLight intensity={1.5} />
 
-        <OrbitControls
-          enableZoom={true}
-          enablePan={false}
-          rotateSpeed={0.6}
-          zoomSpeed={0.5}
-          minDistance={8}
-          maxDistance={22}
-        />
-      </Canvas>
+          <RotatingGroup paused={!!selectedItem}>
+            {items.map((item, index) => (
+              <NodeItem
+                key={item.id}
+                item={item}
+                position={positions[index]}
+                onClick={setSelectedItem}
+              />
+            ))}
+          </RotatingGroup>
+
+          <OrbitControls
+            enableZoom={true}
+            enablePan={false}
+            rotateSpeed={0.6}
+            zoomSpeed={0.5}
+            minDistance={8}
+            maxDistance={22}
+          />
+        </Canvas>
+      </div>
 
       {/* Modal renderizado en document.body mediante Portal */}
       {isMounted &&

@@ -39,23 +39,23 @@ const proyectosDestacados = [
 const esferaItems: SphereItem[] = [
   {
     id: 1,
-    image: "/foto_perfil/perfil.jpg",
-    title: "Camilo Pérez",
-    description: "Científico de Datos e Investigador de IA.",
+    image: "/logosHabilidades/python.webp",
+    title: "Python",
+    description: "3 años de experiencia programando y enseñando este lenguaje.",
     size: 1.5,
   },
   {
     id: 2,
-    image: "/proyectos/proyecto1.png",
-    title: "Agente IA Conversacional",
-    description: "Arquitectura RAG integrada con FastAPI y GCP.",
+    image: "/logosHabilidades/KNIME.png",
+    title: "KNIME",
+    description: "Enseñanza y desarrollo de soluciones de automatización de procesos con KNIME.",
     size: 1.2,
   },
   {
     id: 3,
-    image: "/proyectos/proyecto2.png",
-    title: "Modelos Predictivos",
-    description: "Modelos de aprendizaje automático aplicados a datos complejos.",
+    image: "/logosHabilidades/GoogleAppsScript.webp",
+    title: "Google Apps Script",
+    description: "+1 año de experiencia desarrollando soluciones automatizadas para Google Workspace.",
     size: 1.1,
   },
   {
@@ -70,6 +70,13 @@ const esferaItems: SphereItem[] = [
     image: "/proyectos/proyecto4.png",
     title: "Procesamiento de Lenguaje Natural",
     description: "Extracción y análisis de texto mediante Transformers.",
+    size: 1.0,
+  },
+  {
+    id: 6,
+    image: "/logosHabilidades/KNIME.png",
+    title: "KNIME",
+    description: "Enseñanza de procesos con KNIME.",
     size: 1.0,
   },
 ];
