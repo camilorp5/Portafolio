@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { getCvHref, languages, translations, type Language } from "./i18n";
+import { CoverflowCarousel, CoverflowSlide } from "@/components/CoverflowCarousel";
 
 type TabId = "home" | "publications" | "about" | "chatbot";
 
@@ -38,6 +39,18 @@ export default function Home() {
 
   const apiUrl = "https://chatbot-rag-244902663860.us-central1.run.app/chat";
 
+  // Mapeo de proyectos para el formato Coverflow
+  const coverflowSlides: CoverflowSlide[] = proyectosDestacados.map((proyecto, idx) => {
+    const itemData = t.projects.items[idx];
+    return {
+      src: proyecto.imagen,
+      alt: itemData?.title || `Proyecto ${proyecto.id}`,
+      title: itemData?.title,
+      subtitle: itemData?.description,
+      meta: itemData?.tags.map((tag) => ({ label: "Tag", value: tag })),
+    };
+  });
+
   async function handleSubmit(e: any) {
     e.preventDefault();
     const text = question.trim();
@@ -55,7 +68,6 @@ export default function Home() {
       });
 
       const data = await res.json();
-      // Try common response fields
       const botText = data?.respuesta || data?.answer || data?.text || (typeof data === 'string' ? data : JSON.stringify(data));
       setMessages((m) => [...m, { sender: 'bot', text: String(botText) }]);
     } catch (err: any) {
@@ -166,55 +178,21 @@ export default function Home() {
             </div>
           </section>
 
+          {/* Sección de Proyectos con el CoverflowCarousel */}
           <section id="proyectos" className="mx-auto max-w-6xl px-6 py-20">
-            <div className="mb-12 flex flex-col justify-between md:flex-row md:items-end">
-              <div>
-                <h2 className="text-3xl font-bold tracking-tight text-slate-900">{t.projects.title}</h2>
-                <p className="mt-2 text-slate-500">{t.projects.subtitle}</p>
-              </div>
+            <div className="mb-8 text-center">
+              <h2 className="text-3xl font-bold tracking-tight text-slate-900">{t.projects.title}</h2>
+              <p className="mt-2 text-slate-500">{t.projects.subtitle}</p>
             </div>
 
-            <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-              {proyectosDestacados.map((proyecto) => (
-                <Link
-                  key={proyecto.id}
-                  href={`/proyectos/${proyecto.id}`}
-                  className="group relative h-80 overflow-hidden rounded-2xl border border-slate-200/60 bg-slate-900 shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
-                >
-                  <div
-                    className="absolute inset-0 bg-cover bg-center opacity-100 transition-opacity group-hover:opacity-50"
-                    style={{ backgroundImage: `url(${proyecto.imagen})` }}
-                  >
-                    <div className="h-full w-full bg-gradient-to-br from-blue-950 to-slate-950 opacity-50" />
-                  </div>
-
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/60 to-transparent" />
-
-                  <div className="absolute inset-0 flex flex-col justify-end p-6">
-                    <div className="space-y-2">
-                      <div className="flex flex-wrap gap-2">
-                        {t.projects.items[proyecto.id - 1].tags.map((tag) => (
-                          <span
-                            key={`${proyecto.id}-${tag}`}
-                            className="rounded border border-blue-500/30 bg-blue-500/20 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-blue-300"
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-
-                      <h3 className="flex items-center gap-2 text-xl font-bold text-white transition-colors group-hover:text-blue-300">
-                        {t.projects.items[proyecto.id - 1].title}
-                        <span className="text-sm opacity-70 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1">↗</span>
-                      </h3>
-
-                      <p className="line-clamp-2 text-sm text-slate-300">
-                        {t.projects.items[proyecto.id - 1].description}
-                      </p>
-                    </div>
-                  </div>
-                </Link>
-              ))}
+            <div className="mt-6">
+              <CoverflowCarousel
+                slides={coverflowSlides}
+                showCaption={true}
+                showNavigation={true}
+                showPagination={true}
+                cardWidth="clamp(240px, 32vw, 320px)"
+              />
             </div>
           </section>
         </>
@@ -267,12 +245,12 @@ export default function Home() {
                 ? "02"
                 : "03"}
             </p>
-            <h2 className="mt-4 text-3xl font-bold tracking-tight text-slate-900">
+            <h2 className="mt-2 text-3xl font-bold text-slate-900">
               {activeTab === "publications"
                 ? t.placeholders.publications.title
                 : t.placeholders.about.title}
             </h2>
-            <p className="mt-4 max-w-2xl text-lg text-slate-600">
+            <p className="mt-4 text-slate-600">
               {activeTab === "publications"
                 ? t.placeholders.publications.description
                 : t.placeholders.about.description}
@@ -280,20 +258,6 @@ export default function Home() {
           </div>
         </section>
       )}
-
-      <button
-        type="button"
-        onClick={() => setActiveTab("chatbot")}
-        className="fixed bottom-6 left-6 z-40 flex h-14 w-14 items-center justify-center rounded-full border border-blue-600/20 bg-blue-700 text-white shadow-2xl shadow-blue-700/30 transition-all duration-300 hover:-translate-y-1 hover:bg-blue-800"
-        aria-label="Abrir asistente personal"
-      >
-        <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M8 5h8a3 3 0 0 1 3 3v5a3 3 0 0 1-3 3h-1l-2 3-2-3H8a3 3 0 0 1-3-3V8a3 3 0 0 1 3-3Z" />
-          <path d="M9 10h.01" />
-          <path d="M15 10h.01" />
-          <path d="M10 13c.5.8 1.2 1.2 2 1.2s1.5-.4 2-1.2" />
-        </svg>
-      </button>
     </main>
   );
 }
