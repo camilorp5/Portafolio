@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useRef, useState, useMemo } from "react";
+import React, { useRef, useState, useMemo, useEffect } from "react";
+import { createPortal } from "react-dom";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, Html, Billboard } from "@react-three/drei";
 import * as THREE from "three";
@@ -94,9 +95,14 @@ function RotatingGroup({ children }: { children: React.ReactNode }) {
 
 export default function SphereTagCloud({
   items,
-  radius = 6,
+  radius = 5,
 }: SphereTagCloudProps) {
   const [selectedItem, setSelectedItem] = useState<SphereItem | null>(null);
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   const positions = useMemo(
     () => getSpherePositions(items.length, radius),
@@ -104,11 +110,12 @@ export default function SphereTagCloud({
   );
 
   return (
-    <div className="relative w-full h-[600px] md:h-[700px]">
+    // Contenedor más angosto y cuadrado centrado
+    <div className="relative mx-auto w-full max-w-[500px] h-[500px]">
       {/* Canvas 3D transparente */}
-      <Canvas camera={{ position: [0, 0, 14], fov: 50 }} gl={{ alpha: true }}>
+      <Canvas camera={{ position: [0, 0, 15], fov: 45 }} gl={{ alpha: true }}>
         <ambientLight intensity={1.5} />
-        
+
         <RotatingGroup>
           {items.map((item, index) => (
             <NodeItem
@@ -130,44 +137,48 @@ export default function SphereTagCloud({
         />
       </Canvas>
 
-      {/* Modal posicionado por encima de todo el lienzo 3D */}
-      <AnimatePresence>
-        {selectedItem && (
-          <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.8, y: 20 }}
-              transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className="relative w-full max-w-sm rounded-3xl bg-white overflow-hidden shadow-2xl border border-slate-100"
-            >
-              <button
-                onClick={() => setSelectedItem(null)}
-                className="absolute top-4 right-4 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-black/50 text-white backdrop-blur-sm transition hover:bg-black/80"
-              >
-                <X className="w-5 h-5" />
-              </button>
+      {/* Modal renderizado fuera del árbol de Canvas usando createPortal */}
+      {isMounted &&
+        createPortal(
+          <AnimatePresence>
+            {selectedItem && (
+              <div className="fixed inset-0 z-[99999] flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.8, y: 20 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.8, y: 20 }}
+                  transition={{ type: "spring", damping: 25, stiffness: 300 }}
+                  className="relative w-full max-w-sm rounded-3xl bg-white overflow-hidden shadow-2xl border border-slate-100"
+                >
+                  <button
+                    onClick={() => setSelectedItem(null)}
+                    className="absolute top-4 right-4 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-black/50 text-white backdrop-blur-sm transition hover:bg-black/80"
+                  >
+                    <X className="w-5 h-5" />
+                  </button>
 
-              <div className="relative h-72 w-full bg-slate-100">
-                <img
-                  src={selectedItem.image}
-                  alt={selectedItem.title}
-                  className="h-full w-full object-cover"
-                />
-              </div>
+                  <div className="relative h-72 w-full bg-slate-100">
+                    <img
+                      src={selectedItem.image}
+                      alt={selectedItem.title}
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
 
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-slate-900">
-                  {selectedItem.title}
-                </h3>
-                <p className="mt-2 text-sm text-slate-600 leading-relaxed">
-                  {selectedItem.description}
-                </p>
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold text-slate-900">
+                      {selectedItem.title}
+                    </h3>
+                    <p className="mt-2 text-sm text-slate-600 leading-relaxed">
+                      {selectedItem.description}
+                    </p>
+                  </div>
+                </motion.div>
               </div>
-            </motion.div>
-          </div>
+            )}
+          </AnimatePresence>,
+          document.body
         )}
-      </AnimatePresence>
     </div>
   );
 }
