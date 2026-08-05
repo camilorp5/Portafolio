@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { getCvHref, languages, translations, type Language } from "./i18n";
 import { CoverflowCarousel, CoverflowSlide } from "@/components/CoverflowCarousel";
+import KineticGrid from "@/components/ui/kinetic-grid";
 
 type TabId = "home" | "publications" | "about" | "chatbot";
 
@@ -25,7 +26,11 @@ const proyectosDestacados = [
   },
   {
     id: 3,
-    imagen: "/proyectos/proyecto2.png",
+    imagen: "/proyectos/proyecto3.png",
+  },
+  {
+    id: 4,
+    imagen: "/proyectos/proyecto4.png",
   },
 ];
 
@@ -129,17 +134,19 @@ export default function Home() {
 
       {activeTab === "home" ? (
         <>
-          <section className="relative overflow-hidden border-b border-slate-200 bg-white py-20 lg:py-32">
-            <div className="absolute inset-0 bg-[linear-gradient(to_right,#e2e8f0_1px,transparent_1px),linear-gradient(to_bottom,#e2e8f0_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-60" />
-
-            <div className="relative z-10 mx-auto grid max-w-6xl grid-cols-1 items-center gap-12 px-6 lg:grid-cols-12">
+          {/* Reemplazo de la sección Hero con KineticGrid */}
+          <KineticGrid globalColor="light" className="border-b border-slate-200 py-20 lg:py-32">
+            <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-12 px-6 lg:grid-cols-12">
               <div className="space-y-6 lg:col-span-7">
-                <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-xs font-medium text-blue-700">
+                <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50/80 backdrop-blur-sm px-3 py-1 text-xs font-medium text-blue-700">
                   <span>{t.hero.badge}</span>
                 </div>
 
                 <h1 className="text-4xl font-black tracking-tight text-slate-900 lg:text-6xl">
-                  {t.hero.title} <span className="bg-gradient-to-r from-blue-700 to-indigo-900 bg-clip-text text-transparent">{t.hero.name}</span>
+                  {t.hero.title}{" "}
+                  <span className="bg-gradient-to-r from-blue-700 to-indigo-900 bg-clip-text text-transparent">
+                    {t.hero.name}
+                  </span>
                 </h1>
 
                 <p className="text-lg leading-relaxed text-slate-600">{t.hero.description}</p>
@@ -154,7 +161,7 @@ export default function Home() {
                   <a
                     href={cvHref}
                     download
-                    className="flex items-center gap-2 rounded-xl border border-slate-300 bg-slate-100 px-6 py-3 font-semibold text-slate-700 transition-all hover:bg-slate-200"
+                    className="flex items-center gap-2 rounded-xl border border-slate-300 bg-white/80 backdrop-blur-sm px-6 py-3 font-semibold text-slate-700 transition-all hover:bg-slate-100"
                   >
                     {t.hero.ctaCv}
                   </a>
@@ -180,7 +187,7 @@ export default function Home() {
                 </a>
               </div>
             </div>
-          </section>
+          </KineticGrid>
 
           {/* Sección de Proyectos con el CoverflowCarousel */}
           <section id="proyectos" className="mx-auto max-w-6xl px-6 py-20">

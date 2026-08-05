@@ -27,14 +27,14 @@ export const translations = {
       profileAlt: "Foto de Perfil",
     },
     projects: {
-      title: "Proyectos Destacados",
+      title: "Proyectos destacados",
       subtitle: "Una muestra de mis últimos desarrollos en Inteligencia Artificial",
       items: [
         {
-          title: "Sistema RAG Universitario v1",
+          title: "Chatbot Inteligente de Asesoría Estudiantil",
           description:
-            "Arquitectura Retrieval-Augmented Generation con LangChain y bases de datos vectoriales.",
-          tags: ["Python", "LangChain", "ChromaDB"],
+            "Automatizó asesorías estudiantiles, reduciendo 80% del personal y tiempos, gestionando solicitudes, respuestas y registros personalizados.",
+          tags: ["Python", "LangChain", "ChromaDB", "Api de Whatsapp"],
         },
         {
           title: "Agente Autónomo de Automatización",
@@ -43,11 +43,18 @@ export const translations = {
           tags: ["LangGraph", "Gemini", "Docker"],
         },
         {
-          title: "Sistema de permanencia estudiantil",
+          title: "Sistema de alerta temprana basado en IA para promover la permanencia estudiantil",
           description:
-            "Desarrollo de un sistema de recomendación para mejorar la retención estudiantil en universidades.",
-          tags: ["Python", "Gemini", "PowerBI"],
+            "Implementación de modelos de aprendizaje automático para predecir riesgo de deserción estudiantil en la universidad ITM",
+          tags: ["Python", "Machine y Deep Learning", "LLM", "Power BI"],
         },
+        {
+          title: "Chatbot inteligente para portafolio personal",
+          description:
+            "Chatbot basado en RAG que responde preguntas sobre mi experiencia, formación, proyectos, habilidades y trayectoria profesional.",
+          tags: ["Docker", "RAG", "LLM", "Api de Gemini", "Next.js", "Google Cloud Run"],
+        },
+
       ],
     },
     placeholders: {
@@ -89,10 +96,9 @@ export const translations = {
       subtitle: "A sample of my latest developments in Artificial Intelligence",
       items: [
         {
-          title: "University RAG System v1",
-          description:
-            "Retrieval-Augmented Generation architecture with LangChain and vector databases.",
-          tags: ["Python", "LangChain", "ChromaDB"],
+          "title": "Intelligent Student Advising Chatbot",
+          "description": "Automated student advising by managing requests, responses, and personalized records, reducing staffing needs and response times by 80%.",
+          "tags": ["Python", "LangChain", "ChromaDB", "WhatsApp API"]
         },
         {
           title: "Autonomous Automation Agent",
@@ -101,9 +107,14 @@ export const translations = {
           tags: ["LangGraph", "Gemini", "Docker"],
         },
         {
-          "title": "Student Retention System",
-          "description": "Development of a recommendation system to improve student retention in universities.",
-          "tags": ["Python", "Gemini", "Power BI"]
+          "title": "AI-Based early warning system to promote student retention",
+          "description": "Implementation of machine learning models to predict the risk of student dropout at ITM University.",
+          "tags": ["Python", "Machine Learning & Deep Learning", "LLM", "Power BI"]
+        },
+        {
+          "title": "Intelligent Chatbot for Personal Portfolio",
+          "description": "RAG-based chatbot that answers questions about my experience, education, projects, skills, and professional background.",
+          "tags": ["Docker", "RAG", "LLM", "Gemini API", "Next.js", "Google Cloud Run"]
         },
       ],
     },
@@ -146,10 +157,9 @@ export const translations = {
       subtitle: "Uma amostra dos meus últimos desenvolvimentos em Inteligência Artificial",
       items: [
         {
-          title: "Sistema RAG Universitário v1",
-          description:
-            "Arquitetura Retrieval-Augmented Generation com LangChain e bancos de dados vetoriais.",
-          tags: ["Python", "LangChain", "ChromaDB"],
+          "title": "Chatbot Inteligente para Assessoria Estudantil",
+          "description": "Automatizou a assessoria estudantil, gerenciando solicitações, respostas e registros personalizados, reduzindo em 80% a necessidade de pessoal e o tempo de atendimento.",
+          "tags": ["Python", "LangChain", "ChromaDB", "API do WhatsApp"]
         },
         {
           title: "Agente Autónomo de Automação",
@@ -158,10 +168,15 @@ export const translations = {
           tags: ["LangGraph", "Gemini", "Docker"],
         },
         {
-          "title": "Sistema de Permanência Estudantil",
-          "description": "Desenvolvimento de um sistema de recomendação para melhorar a permanência estudantil nas universidades.",
-          "tags": ["Python", "Gemini", "Power BI"]
-        }
+          "title": "Sistema de Alerta Precoce Baseado em IA para Promover a Permanência Estudantil",
+          "description": "Implementação de modelos de aprendizado de máquina para prever o risco de evasão estudantil na universidade ITM.",
+          "tags": ["Python", "Machine Learning e Deep Learning", "LLM", "Power BI"]
+        },
+        {
+          "title": "Chatbot inteligente para portfólio pessoal",
+          "description": "Chatbot baseado em RAG que responde a perguntas sobre minha experiência, formação, projetos, habilidades e trajetória profissional.",
+          "tags": ["Docker", "RAG", "LLM", "API do Gemini", "Next.js", "Google Cloud Run"]
+        },
       ],
     },
     placeholders: {
