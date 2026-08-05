@@ -7,13 +7,12 @@ import * as THREE from "three";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 
-// Estructura de cada elemento/foto
 export interface SphereItem {
   id: number | string;
   image: string;
   title: string;
   description: string;
-  size?: number; // tamaño del círculo en la esfera
+  size?: number;
 }
 
 interface SphereTagCloudProps {
@@ -21,14 +20,13 @@ interface SphereTagCloudProps {
   radius?: number;
 }
 
-// Algoritmo de distribución uniforme en una esfera (Fibonacci Sphere Algorithm)
 function getSpherePositions(count: number, radius: number) {
   const points: THREE.Vector3[] = [];
-  const phi = Math.PI * (3 - Math.sqrt(5)); // Ángulo dorado
+  const phi = Math.PI * (3 - Math.sqrt(5));
 
   for (let i = 0; i < count; i++) {
-    const y = 1 - (i / (count - 1)) * 2; // y va de 1 a -1
-    const r = Math.sqrt(1 - y * y); // Radio a la altura y
+    const y = 1 - (i / (count - 1)) * 2;
+    const r = Math.sqrt(1 - y * y);
     const theta = phi * i;
 
     const x = Math.cos(theta) * r;
@@ -39,7 +37,6 @@ function getSpherePositions(count: number, radius: number) {
   return points;
 }
 
-// Elemento individual (Foto circular 3D)
 function NodeItem({
   item,
   position,
@@ -63,7 +60,7 @@ function NodeItem({
           onMouseEnter={() => setHovered(true)}
           onMouseLeave={() => setHovered(false)}
           className={`group relative cursor-pointer rounded-full p-1 transition-all duration-300 ${
-            hovered ? "scale-125 z-50 shadow-2xl ring-4 ring-blue-500/50" : "scale-100 shadow-md"
+            hovered ? "scale-125 shadow-xl ring-4 ring-blue-500/50" : "scale-100 shadow-md"
           }`}
           style={{
             width: `${nodeSize * 45}px`,
@@ -83,17 +80,12 @@ function NodeItem({
   );
 }
 
-// Grupo que auto-rota suavemente la esfera
-function RotatingGroup({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+function RotatingGroup({ children }: { children: React.ReactNode }) {
   const groupRef = useRef<THREE.Group>(null);
 
   useFrame((_, delta) => {
     if (groupRef.current) {
-      groupRef.current.rotation.y += delta * 0.08; // Rotación automática lenta
+      groupRef.current.rotation.y += delta * 0.08;
     }
   });
 
@@ -112,9 +104,9 @@ export default function SphereTagCloud({
   );
 
   return (
-    <div className="relative w-full h-[600px] md:h-[700px] bg-slate-950 overflow-hidden rounded-3xl">
-      {/* Canvas 3D */}
-      <Canvas camera={{ position: [0, 0, 14], fov: 50 }}>
+    <div className="relative w-full h-[600px] md:h-[700px]">
+      {/* Canvas 3D transparente */}
+      <Canvas camera={{ position: [0, 0, 14], fov: 50 }} gl={{ alpha: true }}>
         <ambientLight intensity={1.5} />
         
         <RotatingGroup>
@@ -128,7 +120,6 @@ export default function SphereTagCloud({
           ))}
         </RotatingGroup>
 
-        {/* OrbitControls permite arrastrar, rotar en 360° y hacer zoom */}
         <OrbitControls
           enableZoom={true}
           enablePan={false}
@@ -139,10 +130,10 @@ export default function SphereTagCloud({
         />
       </Canvas>
 
-      {/* Modal / Tarjeta al hacer clic */}
+      {/* Modal posicionado por encima de todo el lienzo 3D */}
       <AnimatePresence>
         {selectedItem && (
-          <div className="absolute inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-md">
+          <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
             <motion.div
               initial={{ opacity: 0, scale: 0.8, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -150,7 +141,6 @@ export default function SphereTagCloud({
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
               className="relative w-full max-w-sm rounded-3xl bg-white overflow-hidden shadow-2xl border border-slate-100"
             >
-              {/* Botón Cerrar */}
               <button
                 onClick={() => setSelectedItem(null)}
                 className="absolute top-4 right-4 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-black/50 text-white backdrop-blur-sm transition hover:bg-black/80"
@@ -158,7 +148,6 @@ export default function SphereTagCloud({
                 <X className="w-5 h-5" />
               </button>
 
-              {/* Imagen de la tarjeta */}
               <div className="relative h-72 w-full bg-slate-100">
                 <img
                   src={selectedItem.image}
@@ -167,7 +156,6 @@ export default function SphereTagCloud({
                 />
               </div>
 
-              {/* Contenido / Texto */}
               <div className="p-6">
                 <h3 className="text-xl font-bold text-slate-900">
                   {selectedItem.title}
