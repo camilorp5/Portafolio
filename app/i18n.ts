@@ -206,3 +206,55 @@ export function getCvHref(language: Language) {
 
   return cvFiles[language];
 }
+
+
+const faqData = {
+  mainTitle: "Preguntas Frecuentes",
+  mainSubtitle: "Resolvemos tus dudas principales sobre mis servicios, proyectos y trayectoria profesional.",
+  rows: [
+    {
+      id: "row-1",
+      speed: "35s",
+      direction: "left", // Desplazamiento hacia la izquierda
+      faqItems: [
+        {
+          id: 1,
+          question: "¿En qué tecnologías te especializas?",
+          answer: "Principalmente en Python, Data Science, desarrollo de Chatbots RAG y automatizaciones con Google Workspace.",
+        },
+        {
+          id: 2,
+          question: "¿Cómo podemos iniciar un proyecto juntos?",
+          answer: "Puedes contactarme a través de LinkedIn o enviarme un mensaje directo para coordinar una reunión inicial.",
+        },
+        {
+          id: 3,
+          question: "¿Ofreces asesorías o tutorías?",
+          answer: "Sí, cuento con más de 3 años de experiencia dictando clases y capacitando en desarrollo y ciencia de datos.",
+        },
+      ],
+    },
+    {
+      id: "row-2",
+      speed: "45s",
+      direction: "right", // Desplazamiento en sentido contrario
+      faqItems: [
+        {
+          id: 4,
+          question: "¿Integras modelos de IA en aplicaciones web?",
+          answer: "Sí, construyo soluciones punta a punta utilizando LangChain, APIs de LLMs y despliegues en la nube.",
+        },
+        {
+          id: 5,
+          question: "¿Qué tipo de automatizaciones desarrollas?",
+          answer: "Flujos de trabajo con Google Apps Script, KNIME y herramientas sin/con bajo código para optimizar procesos.",
+        },
+        {
+          id: 6,
+          question: "¿Dónde puedo ver tu CV actualizado?",
+          answer: "Puedes descargarlo directamente desde el botón ubicado en la sección principal de este portafolio.",
+        },
+      ],
+    },
+  ],
+};

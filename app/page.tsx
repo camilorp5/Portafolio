@@ -6,6 +6,7 @@ import { getCvHref, languages, translations, type Language } from "./i18n";
 import { CoverflowCarousel, CoverflowSlide } from "@/components/CoverflowCarousel";
 import KineticGrid from "@/components/ui/kinetic-grid";
 import SphereTagCloud, { SphereItem } from "@/components/SphereTagCloud";
+import FaqSection from "@/components/FaqSection";
 
 type TabId = "home" | "publications" | "about" | "chatbot";
 
@@ -17,22 +18,10 @@ const tabs: Array<{ id: TabId; key: keyof (typeof translations)[Language]["navig
 ];
 
 const proyectosDestacados = [
-  {
-    id: 1,
-    imagen: "/proyectos/proyecto1.png",
-  },
-  {
-    id: 2,
-    imagen: "/proyectos/proyecto2.png",
-  },
-  {
-    id: 3,
-    imagen: "/proyectos/proyecto3.png",
-  },
-  {
-    id: 4,
-    imagen: "/proyectos/proyecto4.png",
-  },
+  { id: 1, imagen: "/proyectos/proyecto1.png" },
+  { id: 2, imagen: "/proyectos/proyecto2.png" },
+  { id: 3, imagen: "/proyectos/proyecto3.png" },
+  { id: 4, imagen: "/proyectos/proyecto4.png" },
 ];
 
 // Datos para la esfera 3D interactiva
@@ -95,6 +84,58 @@ const esferaItems: SphereItem[] = [
   },
 ];
 
+// Datos configurados para FaqSection
+const faqData = {
+  mainTitle: "Preguntas Frecuentes",
+  mainSubtitle: "Respuestas a dudas habituales sobre mi experiencia, habilidades y metodología de trabajo.",
+  rows: [
+    {
+      id: "row-1",
+      speed: "35s",
+      direction: "left" as const,
+      faqItems: [
+        {
+          id: 1,
+          question: "¿En qué tecnologías te especializas?",
+          answer: "Principalmente en Python, Data Science, soluciones de automatización con Google Workspace y modelos RAG.",
+        },
+        {
+          id: 2,
+          question: "¿Cómo se integran estos modelos?",
+          answer: "A través de APIs REST creadas con frameworks modernos y desplegadas en servicios cloud como GCP.",
+        },
+        {
+          id: 3,
+          question: "¿Impartes formación o capacitaciones?",
+          answer: "Sí, poseo más de 3 años de experiencia enseñando Python, automatizaciones y ciencia de datos.",
+        },
+      ],
+    },
+    {
+      id: "row-2",
+      speed: "45s",
+      direction: "right" as const,
+      faqItems: [
+        {
+          id: 4,
+          question: "¿Cuál es tu flujo de trabajo en proyectos de datos?",
+          answer: "Análisis y limpieza de datos, prototipado, modelado, evaluación y despliegue continuo de la solución.",
+        },
+        {
+          id: 5,
+          question: "¿Dónde puedo consultar tu trayectoria detallada?",
+          answer: "Puedes descargar mi CV en la parte superior o revisar mi perfil profesional en LinkedIn.",
+        },
+        {
+          id: 6,
+          question: "¿Desarrollas aplicaciones interactivas?",
+          answer: "Sí, desarrollo tableros y webapps rápidas con herramientas como Streamlit y React.",
+        },
+      ],
+    },
+  ],
+};
+
 export default function Home() {
   const [language, setLanguage] = useState<Language>("es");
   const [activeTab, setActiveTab] = useState<TabId>("home");
@@ -109,7 +150,6 @@ export default function Home() {
 
   const apiUrl = "https://chatbot-rag-244902663860.us-central1.run.app/chat";
 
-  // Mapeo de proyectos para el formato Coverflow
   const coverflowSlides: CoverflowSlide[] = proyectosDestacados.map((proyecto, idx) => {
     const itemData = t.projects.items[idx];
     return {
@@ -150,7 +190,7 @@ export default function Home() {
   }
 
   return (
-    <main className="min-h-screen bg-slate-50 text-slate-900 font-sans selection:bg-blue-500 selection:text-white">
+    <main className="min-h-screen bg-slate-50 text-slate-900 font-sans selection:bg-blue-500 selection:text-white overflow-x-hidden">
       <header className="sticky top-0 z-30 border-b border-slate-200/80 bg-white/90 backdrop-blur">
         <div className="mx-auto flex max-w-6xl flex-col gap-3 px-6 py-4 sm:flex-row sm:items-center sm:justify-end">
           <div className="flex flex-wrap items-center justify-end gap-2 sm:gap-3">
@@ -195,7 +235,6 @@ export default function Home() {
 
       {activeTab === "home" ? (
         <>
-          {/* Sección Hero con KineticGrid */}
           <KineticGrid globalColor="light" className="border-b border-slate-200 py-20 lg:py-32">
             <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-12 px-6 lg:grid-cols-12">
               <div className="space-y-6 lg:col-span-7">
@@ -250,7 +289,6 @@ export default function Home() {
             </div>
           </KineticGrid>
 
-          {/* Sección de Proyectos con el CoverflowCarousel */}
           <section id="proyectos" className="mx-auto max-w-6xl px-6 py-20">
             <div className="mb-8 text-center">
               <h2 className="text-3xl font-bold tracking-tight text-slate-900">{t.projects.title}</h2>
@@ -268,7 +306,6 @@ export default function Home() {
             </div>
           </section>
 
-          {/* Sección de la Esfera 3D Interactiva (Ubicada abajo de todo) */}
           <section className="mx-auto max-w-6xl px-6 pb-20 pt-10">
             <div className="mb-8 text-center">
               <h2 className="text-3xl font-bold tracking-tight text-slate-900">
@@ -323,23 +360,37 @@ export default function Home() {
             </div>
           </div>
         </section>
+      ) : activeTab === "about" ? (
+        /* Pestaña "03 Sobre mí" con la sección FAQ incluida */
+        <section className="mx-auto flex flex-col min-h-[70vh] max-w-6xl items-center justify-center px-6 py-20 gap-12">
+          <div className="w-full rounded-3xl border border-slate-200 bg-white p-10 shadow-sm">
+            <p className="text-sm font-semibold uppercase tracking-[0.3em] text-blue-700">
+              03
+            </p>
+            <h2 className="mt-2 text-3xl font-bold text-slate-900">
+              {t.placeholders.about.title}
+            </h2>
+            <p className="mt-4 text-slate-600">
+              {t.placeholders.about.description}
+            </p>
+          </div>
+
+          <div className="flex justify-center w-full bg-slate-100/60 py-10 rounded-3xl border border-slate-200">
+            <FaqSection data={faqData} />
+          </div>
+        </section>
       ) : (
+        /* Pestaña "02 Publicaciones" */
         <section className="mx-auto flex min-h-[70vh] max-w-5xl items-center justify-center px-6 py-20">
           <div className="w-full rounded-3xl border border-slate-200 bg-white p-10 shadow-sm">
             <p className="text-sm font-semibold uppercase tracking-[0.3em] text-blue-700">
-              {activeTab === "publications"
-                ? "02"
-                : "03"}
+              02
             </p>
             <h2 className="mt-2 text-3xl font-bold text-slate-900">
-              {activeTab === "publications"
-                ? t.placeholders.publications.title
-                : t.placeholders.about.title}
+              {t.placeholders.publications.title}
             </h2>
             <p className="mt-4 text-slate-600">
-              {activeTab === "publications"
-                ? t.placeholders.publications.description
-                : t.placeholders.about.description}
+              {t.placeholders.publications.description}
             </p>
           </div>
         </section>
