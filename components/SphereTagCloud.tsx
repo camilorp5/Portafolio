@@ -64,8 +64,8 @@ function NodeItem({
             hovered ? "scale-125 shadow-xl ring-4 ring-blue-500/50" : "scale-100 shadow-md"
           }`}
           style={{
-            width: `${nodeSize * 45}px`,
-            height: `${nodeSize * 45}px`,
+            width: `${nodeSize * 38}px`,
+            height: `${nodeSize * 38}px`,
           }}
         >
           <div className="w-full h-full rounded-full overflow-hidden border-2 border-white bg-slate-200">
@@ -81,13 +81,19 @@ function NodeItem({
   );
 }
 
-function RotatingGroup({ children }: { children: React.ReactNode }) {
+function RotatingGroup({
+  children,
+  paused,
+}: {
+  children: React.ReactNode;
+  paused: boolean;
+}) {
   const groupRef = useRef<THREE.Group>(null);
 
   useFrame((_, delta) => {
-    if (groupRef.current) {
-      groupRef.current.rotation.y += delta * 0.08;
-    }
+    if (!groupRef.current || paused) return;
+
+    groupRef.current.rotation.y += delta * 0.08;
   });
 
   return <group ref={groupRef}>{children}</group>;
@@ -95,7 +101,7 @@ function RotatingGroup({ children }: { children: React.ReactNode }) {
 
 export default function SphereTagCloud({
   items,
-  radius = 5,
+  radius = 4,
 }: SphereTagCloudProps) {
   const [selectedItem, setSelectedItem] = useState<SphereItem | null>(null);
   const [isMounted, setIsMounted] = useState(false);
@@ -110,13 +116,29 @@ export default function SphereTagCloud({
   );
 
   return (
-    // Contenedor más angosto y cuadrado centrado
-    <div className="relative mx-auto w-full max-w-[500px] h-[500px]">
-      {/* Canvas 3D transparente */}
-      <Canvas camera={{ position: [0, 0, 15], fov: 45 }} gl={{ alpha: true }}>
+    <motion.div
+      className="relative mx-auto w-full max-w-[420px] h-[420px]"
+      animate={{
+        opacity: selectedItem ? 0 : 1,
+        scale: selectedItem ? 0.82 : 1,
+        filter: selectedItem ? "blur(8px)" : "blur(0px)",
+      }}
+      transition={{
+        duration: 0.35,
+        ease: "easeInOut",
+      }}
+    >
+      {/* Canvas 3D */}
+      <Canvas
+        camera={{ position: [0, 0, 14], fov: 50 }}
+        gl={{ alpha: true }}
+        style={{
+          pointerEvents: selectedItem ? "none" : "auto",
+        }}
+      >
         <ambientLight intensity={1.5} />
 
-        <RotatingGroup>
+        <RotatingGroup paused={!!selectedItem}>
           {items.map((item, index) => (
             <NodeItem
               key={item.id}
@@ -137,16 +159,28 @@ export default function SphereTagCloud({
         />
       </Canvas>
 
-      {/* Modal renderizado fuera del árbol de Canvas usando createPortal */}
+      {/* Modal renderizado en document.body mediante Portal */}
       {isMounted &&
         createPortal(
           <AnimatePresence>
             {selectedItem && (
-              <div className="fixed inset-0 z-[99999] flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
+              <div className="fixed inset-0 z-[99999] flex items-center justify-center p-4 bg-black/70 backdrop-blur-md">
                 <motion.div
-                  initial={{ opacity: 0, scale: 0.8, y: 20 }}
-                  animate={{ opacity: 1, scale: 1, y: 0 }}
-                  exit={{ opacity: 0, scale: 0.8, y: 20 }}
+                  initial={{
+                    opacity: 0,
+                    scale: 0.7,
+                    y: 40,
+                  }}
+                  animate={{
+                    opacity: 1,
+                    scale: 1,
+                    y: 0,
+                  }}
+                  exit={{
+                    opacity: 0,
+                    scale: 0.7,
+                    y: 40,
+                  }}
                   transition={{ type: "spring", damping: 25, stiffness: 300 }}
                   className="relative w-full max-w-sm rounded-3xl bg-white overflow-hidden shadow-2xl border border-slate-100"
                 >
@@ -179,6 +213,6 @@ export default function SphereTagCloud({
           </AnimatePresence>,
           document.body
         )}
-    </div>
+    </motion.div>
   );
 }
