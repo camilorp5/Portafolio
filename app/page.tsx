@@ -5,6 +5,7 @@ import { useState } from "react";
 import { getCvHref, languages, translations, type Language } from "./i18n";
 import { CoverflowCarousel, CoverflowSlide } from "@/components/CoverflowCarousel";
 import KineticGrid from "@/components/ui/kinetic-grid";
+import SphereTagCloud, { SphereItem } from "@/components/SphereTagCloud";
 
 type TabId = "home" | "publications" | "about" | "chatbot";
 
@@ -31,6 +32,45 @@ const proyectosDestacados = [
   {
     id: 4,
     imagen: "/proyectos/proyecto4.png",
+  },
+];
+
+// Datos para la esfera 3D interactiva
+const esferaItems: SphereItem[] = [
+  {
+    id: 1,
+    image: "/foto_perfil/perfil.jpg",
+    title: "Camilo Pérez",
+    description: "Científico de Datos e Investigador de IA.",
+    size: 1.5,
+  },
+  {
+    id: 2,
+    image: "/proyectos/proyecto1.png",
+    title: "Agente IA Conversacional",
+    description: "Arquitectura RAG integrada con FastAPI y GCP.",
+    size: 1.2,
+  },
+  {
+    id: 3,
+    image: "/proyectos/proyecto2.png",
+    title: "Modelos Predictivos",
+    description: "Modelos de aprendizaje automático aplicados a datos complejos.",
+    size: 1.1,
+  },
+  {
+    id: 4,
+    image: "/proyectos/proyecto3.png",
+    title: "Machine Learning Ops",
+    description: "Pipelines de CI/CD para despliegue continuo de modelos.",
+    size: 1.3,
+  },
+  {
+    id: 5,
+    image: "/proyectos/proyecto4.png",
+    title: "Procesamiento de Lenguaje Natural",
+    description: "Extracción y análisis de texto mediante Transformers.",
+    size: 1.0,
   },
 ];
 
@@ -134,7 +174,7 @@ export default function Home() {
 
       {activeTab === "home" ? (
         <>
-          {/* Reemplazo de la sección Hero con KineticGrid */}
+          {/* Sección Hero con KineticGrid */}
           <KineticGrid globalColor="light" className="border-b border-slate-200 py-20 lg:py-32">
             <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-12 px-6 lg:grid-cols-12">
               <div className="space-y-6 lg:col-span-7">
@@ -205,6 +245,20 @@ export default function Home() {
                 cardWidth="clamp(240px, 32vw, 320px)"
               />
             </div>
+          </section>
+
+          {/* Sección de la Esfera 3D Interactiva (Ubicada abajo de todo) */}
+          <section className="mx-auto max-w-6xl px-6 pb-20 pt-10">
+            <div className="mb-8 text-center">
+              <h2 className="text-3xl font-bold tracking-tight text-slate-900">
+                Explora el Ecosistema
+              </h2>
+              <p className="mt-2 text-slate-500">
+                Mueve la esfera en cualquier dirección para interactuar con los proyectos e investigaciones.
+              </p>
+            </div>
+
+            <SphereTagCloud items={esferaItems} radius={6} />
           </section>
         </>
       ) : activeTab === "chatbot" ? (
