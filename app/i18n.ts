@@ -6,6 +6,26 @@ export const languages = [
 
 export type Language = (typeof languages)[number]["code"];
 
+// Interfaces para las FAQ
+export interface FaqItem {
+  id: string | number;
+  question: string;
+  answer: string;
+}
+
+export interface FaqRow {
+  id: string | number;
+  speed?: string;
+  direction?: "left" | "right";
+  faqItems: FaqItem[];
+}
+
+export interface FaqData {
+  mainTitle: string;
+  mainSubtitle: string;
+  rows: FaqRow[];
+}
+
 export const translations = {
   es: {
     languagelabel: "Puedes hablar conmigo en:",
@@ -207,8 +227,8 @@ export function getCvHref(language: Language) {
   return cvFiles[language];
 }
 
-
-const faqData = {
+// Exportamos la constante con su tipo asignado explícitamente
+export const faqData: FaqData = {
   mainTitle: "Preguntas Frecuentes",
   mainSubtitle:
     "Resolvemos tus dudas principales sobre mis servicios, proyectos y trayectoria profesional.",

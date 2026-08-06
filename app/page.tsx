@@ -2,10 +2,10 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { getCvHref, languages, translations, type Language } from "./i18n";
 import { CoverflowCarousel, CoverflowSlide } from "@/components/CoverflowCarousel";
 import KineticGrid from "@/components/ui/kinetic-grid";
 import SphereTagCloud, { SphereItem } from "@/components/SphereTagCloud";
+import { getCvHref, languages, translations, faqData, type Language, type FaqData } from "./i18n";
 import FaqSection from "@/components/FaqSection";
 
 type TabId = "home" | "publications" | "about" | "chatbot";
@@ -105,57 +105,6 @@ const esferaItems: SphereItem[] = [
   },
 ];
 
-// Datos configurados para FaqSection
-const faqData = {
-  mainTitle: "Preguntas Frecuentes",
-  mainSubtitle: "Respuestas a dudas habituales sobre mi experiencia, habilidades y metodología de trabajo.",
-  rows: [
-    {
-      id: "row-1",
-      speed: "35s",
-      direction: "left" as const,
-      faqItems: [
-        {
-          id: 1,
-          question: "¿En qué tecnologías te especializas?",
-          answer: "Principalmente en Python, Data Science, soluciones de automatización con Google Workspace y modelos RAG.",
-        },
-        {
-          id: 2,
-          question: "¿Cómo se integran estos modelos?",
-          answer: "A través de APIs REST creadas con frameworks modernos y desplegadas en servicios cloud como GCP.",
-        },
-        {
-          id: 3,
-          question: "¿Impartes formación o capacitaciones?",
-          answer: "Sí, poseo más de 3 años de experiencia enseñando Python, automatizaciones y ciencia de datos.",
-        },
-      ],
-    },
-    {
-      id: "row-2",
-      speed: "45s",
-      direction: "right" as const,
-      faqItems: [
-        {
-          id: 4,
-          question: "¿Cuál es tu flujo de trabajo en proyectos de datos?",
-          answer: "Análisis y limpieza de datos, prototipado, modelado, evaluación y despliegue continuo de la solución.",
-        },
-        {
-          id: 5,
-          question: "¿Dónde puedo consultar tu trayectoria detallada?",
-          answer: "Puedes descargar mi CV en la parte superior o revisar mi perfil profesional en LinkedIn.",
-        },
-        {
-          id: 6,
-          question: "¿Desarrollas aplicaciones interactivas?",
-          answer: "Sí, desarrollo tableros y webapps rápidas con herramientas como Streamlit y React.",
-        },
-      ],
-    },
-  ],
-};
 
 export default function Home() {
   const [language, setLanguage] = useState<Language>("es");
