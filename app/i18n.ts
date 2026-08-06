@@ -235,7 +235,7 @@ export const faqData: FaqData = {
   rows: [
     {
       id: "row-1",
-      speed: "35s",
+      speed: "90s",
       direction: "left",
       faqItems: [
         {
@@ -302,7 +302,7 @@ export const faqData: FaqData = {
     },
     {
       id: "row-2",
-      speed: "45s",
+      speed: "100s",
       direction: "right",
       faqItems: [
         {
