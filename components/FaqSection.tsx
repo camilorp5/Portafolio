@@ -58,16 +58,19 @@ export const HorizontalScroller = ({
       ? "animate-scroll-horizontal-reverse"
       : "animate-scroll-horizontal";
 
-  // Estilo inline para pasar la duración a la variable CSS
   const style = { "--scroll-duration": speed } as React.CSSProperties;
 
   return (
     <div className="scroller-mask relative w-full overflow-hidden group">
-      <div className={`flex ${animationClass} group-hover:[animation-play-state:paused]`} style={style}>
+      {/* Añadimos 'w-max' aquí para asegurar el cálculo exacto del 50% */}
+      <div
+        className={`flex w-max ${animationClass} group-hover:[animation-play-state:paused]`}
+        style={style}
+      >
         <div className="flex flex-shrink-0 items-stretch justify-center gap-8 px-4">
           {children}
         </div>
-        {/* Duplicado para un bucle continuo perfecto */}
+        {/* Duplicado exacto para la ilusión infinita */}
         <div
           className="flex flex-shrink-0 items-stretch justify-center gap-8 px-4"
           aria-hidden="true"
