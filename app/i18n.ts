@@ -210,49 +210,140 @@ export function getCvHref(language: Language) {
 
 const faqData = {
   mainTitle: "Preguntas Frecuentes",
-  mainSubtitle: "Resolvemos tus dudas principales sobre mis servicios, proyectos y trayectoria profesional.",
+  mainSubtitle:
+    "Resolvemos tus dudas principales sobre mis servicios, proyectos y trayectoria profesional.",
   rows: [
     {
       id: "row-1",
       speed: "35s",
-      direction: "left", // Desplazamiento hacia la izquierda
+      direction: "left",
       faqItems: [
         {
           id: 1,
           question: "¿En qué tecnologías te especializas?",
-          answer: "Principalmente en Python, Data Science, desarrollo de Chatbots RAG y automatizaciones con Google Workspace.",
+          answer:
+            "Principalmente en Python, Inteligencia Artificial, Machine Learning, FastAPI, React, Next.js y automatización de procesos.",
         },
         {
           id: 2,
           question: "¿Cómo podemos iniciar un proyecto juntos?",
-          answer: "Puedes contactarme a través de LinkedIn o enviarme un mensaje directo para coordinar una reunión inicial.",
+          answer:
+            "Puedes escribirme a camilorafaelperezchaves@gmail.com o contactarme por LinkedIn para conversar sobre tu proyecto.",
         },
         {
           id: 3,
           question: "¿Ofreces asesorías o tutorías?",
-          answer: "Sí, cuento con más de 3 años de experiencia dictando clases y capacitando en desarrollo y ciencia de datos.",
+          answer:
+            "Sí. Brindo asesorías en programación, matemáticas, ciencia de datos e inteligencia artificial.",
+        },
+        {
+          id: 4,
+          question: "¿Integras modelos de IA en aplicaciones web?",
+          answer:
+            "Sí. Desarrollo aplicaciones que integran modelos LLM, sistemas RAG, APIs y despliegues en la nube.",
+        },
+        {
+          id: 5,
+          question: "¿Qué experiencia tienes desarrollando IA?",
+          answer:
+            "He desarrollado chatbots, sistemas predictivos, automatizaciones y soluciones de visión artificial para problemas reales.",
+        },
+        {
+          id: 6,
+          question: "¿Has trabajado con chatbots inteligentes?",
+          answer:
+            "Sí. He construido asistentes conversacionales para portafolios, WhatsApp y plataformas educativas utilizando arquitecturas RAG.",
+        },
+        {
+          id: 7,
+          question: "¿Trabajas de forma remota?",
+          answer:
+            "Sí. Puedo colaborar de manera remota con equipos nacionales e internacionales.",
+        },
+        {
+          id: 8,
+          question: "¿Hablas inglés?",
+          answer:
+            "Sí. Cuento con un nivel B2 y puedo comunicarme en entornos técnicos y profesionales.",
+        },
+        {
+          id: 9,
+          question: "¿Qué tipo de proyectos disfrutas desarrollar?",
+          answer:
+            "Aquellos que combinan inteligencia artificial, desarrollo web y automatización para generar impacto real.",
+        },
+        {
+          id: 10,
+          question: "¿Cómo puedo contactarte?",
+          answer:
+            "Puedes escribirme a camilorafaelperezchaves@gmail.com o conectar conmigo en LinkedIn.",
         },
       ],
     },
     {
       id: "row-2",
       speed: "45s",
-      direction: "right", // Desplazamiento en sentido contrario
+      direction: "right",
       faqItems: [
         {
-          id: 4,
-          question: "¿Integras modelos de IA en aplicaciones web?",
-          answer: "Sí, construyo soluciones punta a punta utilizando LangChain, APIs de LLMs y despliegues en la nube.",
-        },
-        {
-          id: 5,
+          id: 11,
           question: "¿Qué tipo de automatizaciones desarrollas?",
-          answer: "Flujos de trabajo con Google Apps Script, KNIME y herramientas sin/con bajo código para optimizar procesos.",
+          answer:
+            "Automatizo procesos con Google Apps Script, APIs, Python y herramientas de inteligencia artificial.",
         },
         {
-          id: 6,
+          id: 12,
           question: "¿Dónde puedo ver tu CV actualizado?",
-          answer: "Puedes descargarlo directamente desde el botón ubicado en la sección principal de este portafolio.",
+          answer:
+            "Puedes descargarlo desde la sección principal de este portafolio.",
+        },
+        {
+          id: 13,
+          question: "¿Qué te diferencia de otros candidatos?",
+          answer:
+            "Combino desarrollo de software, inteligencia artificial y una sólida formación matemática para resolver problemas complejos.",
+        },
+        {
+          id: 14,
+          question: "¿Has liderado proyectos?",
+          answer:
+            "Sí. He liderado proyectos de IA, equipos académicos y soluciones desarrolladas para organizaciones educativas.",
+        },
+        {
+          id: 15,
+          question: "¿Tienes experiencia enseñando?",
+          answer:
+            "Sí. He sido profesor y facilitador de IA, programación, matemáticas y ciencia de datos durante más de tres años.",
+        },
+        {
+          id: 16,
+          question: "¿Qué herramientas de IA utilizas?",
+          answer:
+            "Trabajo con OpenAI, Gemini, LangChain, LangGraph, ChromaDB, FAISS y modelos de Machine Learning.",
+        },
+        {
+          id: 17,
+          question: "¿Desarrollas aplicaciones completas?",
+          answer:
+            "Sí. Construyo soluciones Full Stack desde el backend hasta la interfaz y el despliegue en producción.",
+        },
+        {
+          id: 18,
+          question: "¿Participas en investigación?",
+          answer:
+            "Sí. He participado en semilleros, congresos y proyectos de investigación en inteligencia artificial y ciencia de datos.",
+        },
+        {
+          id: 19,
+          question: "¿Qué buscas en tu próximo reto profesional?",
+          answer:
+            "Seguir creando soluciones de IA que generen impacto mientras continúo aprendiendo y creciendo profesionalmente.",
+        },
+        {
+          id: 20,
+          question: "¿También desarrollas proyectos personales?",
+          answer:
+            "Sí. Constantemente construyo aplicaciones, chatbots y herramientas para experimentar con nuevas tecnologías.",
         },
       ],
     },

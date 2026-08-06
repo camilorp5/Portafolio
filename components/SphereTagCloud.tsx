@@ -102,7 +102,7 @@ function RotatingGroup({
 
 export default function SphereTagCloud({
   items,
-  radius = 4,
+  radius = 5.8, // Aumentado el radio por defecto de la esfera
 }: SphereTagCloudProps) {
   const [selectedItem, setSelectedItem] = useState<SphereItem | null>(null);
   const [isMounted, setIsMounted] = useState(false);
@@ -118,7 +118,8 @@ export default function SphereTagCloud({
 
   return (
     <motion.div
-      className="relative mx-auto w-full max-w-[420px] h-[420px]"
+      /* Se aumentó el tamaño de la tarjeta de 420px a 600px */
+      className="relative mx-auto w-full max-w-[600px] h-[600px]"
       animate={{
         opacity: selectedItem ? 0 : 1,
         scale: selectedItem ? 0.82 : 1,
@@ -132,8 +133,8 @@ export default function SphereTagCloud({
       {/* Resplandor gráfico tipo tarjeta detrás del contenedor */}
       <div className="absolute -inset-2 rounded-3xl bg-gradient-to-r from-blue-500/25 via-indigo-500/20 to-cyan-400/25 blur-xl pointer-events-none" />
 
-      {/* Contenedor principal estilo tarjeta */}
-      <div className="relative w-full h-full rounded-3xl border border-slate-800 bg-slate-50 shadow-2xl overflow-hidden backdrop-blur-xl">
+      {/* Se eliminó 'border border-slate-800' y se usó 'border-0' */}
+      <div className="relative w-full h-full rounded-3xl border-0 bg-slate-50 shadow-2xl overflow-hidden backdrop-blur-xl">
         {/* Canvas 3D */}
         <Canvas
           camera={{ position: [0, 0, 20], fov: 50 }}

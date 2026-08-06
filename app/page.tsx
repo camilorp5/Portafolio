@@ -82,6 +82,27 @@ const esferaItems: SphereItem[] = [
     description: "Experiencia desarrollando visualizaciones interactivas y aplicaciones web para proyectos de ciencia de datos con Streamlit.",
     size: 1.2,
   },
+  {
+    id: 9,
+    image: "/logosHabilidades/powerbi.webp",
+    title: "Power BI",
+    description: "Competencia básica en el diseño e implementación de tableros de control.",
+    size: 1.1,
+  },
+  {
+    id: 10,
+    image: "/logosHabilidades/htmlcss.webp",
+    title: "HTML y CSS",
+    description: "Competencia básica en el desarrollo de páginas web y diseño de interfaces.",
+    size: 1.1,
+  },
+  {
+    id: 11,
+    image: "/logosHabilidades/wix.png",
+    title: "Wix",
+    description: "Competencia básica en el desarrollo de páginas web y diseño de interfaces con Wix.",
+    size: 1.1,
+  },
 ];
 
 // Datos configurados para FaqSection
