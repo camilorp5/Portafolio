@@ -1,6 +1,6 @@
 "use client";
 
-import CssImageStacking from "@/components/CssImageStacking";
+import CssImageStacking from "@/components/ui/css-image-stacking";
 
 import Link from "next/link";
 import { useState } from "react";
@@ -171,7 +171,7 @@ export default function Home() {
   }
 
   return (
-    <main className="min-h-screen bg-slate-50 text-slate-900 font-sans selection:bg-blue-500 selection:text-white overflow-x-hidden">
+    <main className="min-h-screen bg-slate-50 text-slate-900 font-sans selection:bg-blue-500 selection:text-white">
       <header className="sticky top-0 z-30 border-b border-slate-200/80 bg-white/90 backdrop-blur">
         <div className="mx-auto flex max-w-6xl flex-col gap-3 px-6 py-4 sm:flex-row sm:items-center sm:justify-end">
           <div className="flex flex-wrap items-center justify-end gap-2 sm:gap-3">
@@ -359,11 +359,11 @@ export default function Home() {
             <FaqSection data={faqData} />
           </div>
         </section>
-        ) : activeTab === "publications" && (
-          <section className="w-full">
-            <CssImageStacking />
-          </section>
-        )}
+      ) : activeTab === "publications" && (
+        <section className="w-full relative">
+          <CssImageStacking />
+        </section>
+      )}
     </main>
   );
 }
