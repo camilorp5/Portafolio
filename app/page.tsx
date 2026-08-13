@@ -300,10 +300,10 @@ export default function Home() {
           <section className="mx-auto max-w-6xl px-6 pb-20 pt-10">
             <div className="mb-8 text-center">
               <h2 className="text-3xl font-bold tracking-tight text-slate-900">
-                Explora el Ecosistema
+                Explora mis habilidades
               </h2>
               <p className="mt-2 text-slate-500">
-                Mueve la esfera en cualquier dirección para interactuar con los proyectos e investigaciones.
+                Mueve la esfera en cualquier dirección para interactuar con las habilidades y tecnologías que domino.
               </p>
             </div>
 
@@ -354,17 +354,6 @@ export default function Home() {
       ) : activeTab === "about" ? (
         /* Pestaña "03 Sobre mí" con la sección FAQ incluida */
         <section className="mx-auto flex flex-col min-h-[70vh] max-w-6xl items-center justify-center px-6 py-20 gap-12">
-          <div className="w-full rounded-3xl border border-slate-200 bg-white p-10 shadow-sm">
-            <p className="text-sm font-semibold uppercase tracking-[0.3em] text-blue-700">
-              03
-            </p>
-            <h2 className="mt-2 text-3xl font-bold text-slate-900">
-              {t.placeholders.about.title}
-            </h2>
-            <p className="mt-4 text-slate-600">
-              {t.placeholders.about.description}
-            </p>
-          </div>
 
           <div className="flex justify-center w-full bg-slate-100/60 py-10 rounded-3xl border border-slate-200">
             <FaqSection data={faqData} />

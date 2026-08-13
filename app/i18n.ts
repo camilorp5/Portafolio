@@ -71,7 +71,7 @@ export const translations = {
         {
           title: "Chatbot inteligente para portafolio personal",
           description:
-            "Chatbot basado en RAG que responde preguntas sobre mi experiencia, formación, proyectos, habilidades y trayectoria profesional.",
+            "Chatbot basado en RAG que responde preguntas sobre mi experiencia, formación, habilidades y trayectoria profesional.",
           tags: ["Docker", "RAG", "LLM", "Api de Gemini", "Next.js", "Google Cloud Run"],
         },
 
@@ -133,7 +133,7 @@ export const translations = {
         },
         {
           "title": "Intelligent Chatbot for Personal Portfolio",
-          "description": "RAG-based chatbot that answers questions about my experience, education, projects, skills, and professional background.",
+          "description": "RAG-based chatbot that answers questions about my experience, education, skills, and professional background.",
           "tags": ["Docker", "RAG", "LLM", "Gemini API", "Next.js", "Google Cloud Run"]
         },
       ],
@@ -194,7 +194,7 @@ export const translations = {
         },
         {
           "title": "Chatbot inteligente para portfólio pessoal",
-          "description": "Chatbot baseado em RAG que responde a perguntas sobre minha experiência, formação, projetos, habilidades e trajetória profissional.",
+          "description": "Chatbot baseado em RAG que responde a perguntas sobre minha experiência, formação, habilidades e trajetória profissional.",
           "tags": ["Docker", "RAG", "LLM", "API do Gemini", "Next.js", "Google Cloud Run"]
         },
       ],
@@ -235,7 +235,7 @@ export const faqData: FaqData = {
   rows: [
     {
       id: "row-1",
-      speed: "120s",
+      speed: "140s",
       direction: "left",
       faqItems: [
         {
@@ -302,7 +302,7 @@ export const faqData: FaqData = {
     },
     {
       id: "row-2",
-      speed: "120s",
+      speed: "140s",
       direction: "right",
       faqItems: [
         {
