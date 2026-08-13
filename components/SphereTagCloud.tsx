@@ -98,7 +98,7 @@ export default function SphereImageGrid({
   dragSensitivity = 0.5,
   momentumDecay = 0.95,
   maxRotationSpeed = 5,
-  baseImageScale = 0.08,
+  baseImageScale = 0.1,
   perspective = 1000,
   autoRotate = true,
   autoRotateSpeed = 0.2,
