@@ -359,12 +359,11 @@ export default function Home() {
             <FaqSection data={faqData} />
           </div>
         </section>
-        ) : (
-            /* Pestaña "02 Publicaciones" */
-            <section className="w-full">
-              <CssImageStacking />
-            </section>
-      )}
+        ) : activeTab === "publications" && (
+          <section className="w-full">
+            <CssImageStacking />
+          </section>
+        )}
     </main>
   );
 }
