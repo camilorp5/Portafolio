@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { CoverflowCarousel, CoverflowSlide } from "@/components/CoverflowCarousel";
 import KineticGrid from "@/components/ui/kinetic-grid";
-import SphereTagCloud, { SphereItem } from "@/components/SphereTagCloud";
+import SphereImageGrid, { ImageData } from "@/components/SphereImageGrid";
 import { getCvHref, languages, translations, faqData, type Language, type FaqData } from "./i18n";
 import FaqSection from "@/components/FaqSection";
 
@@ -25,106 +25,94 @@ const proyectosDestacados = [
 ];
 
 // Datos para la esfera 3D interactiva
-const esferaItems: SphereItem[] = [
+// Datos para la esfera 3D interactiva
+const esferaItems: ImageData[] = [
   {
-    id: 1,
-    image: "/logosHabilidades/python.webp",
+    id: "1",
+    src: "/logosHabilidades/python.webp",
     title: "Python",
     description: "3 años de experiencia programando y enseñando este lenguaje. Competencia avanzada.",
-    size: 1.5,
   },
   {
-    id: 2,
-    image: "/logosHabilidades/KNIME.png",
+    id: "2",
+    src: "/logosHabilidades/KNIME.png",
     title: "KNIME",
     description: "Enseñanza y desarrollo de soluciones de automatización de procesos con KNIME.",
-    size: 1.2,
   },
   {
-    id: 3,
-    image: "/logosHabilidades/GoogleAppsScript.webp",
+    id: "3",
+    src: "/logosHabilidades/GoogleAppsScript.webp",
     title: "Google Apps Script",
     description: "+1 año de experiencia desarrollando soluciones automatizadas para Google Workspace.",
-    size: 1.2,
   },
   {
-    id: 4,
-    image: "/logosHabilidades/github.png",
+    id: "4",
+    src: "/logosHabilidades/github.png",
     title: "Github",
     description: "+10 proyectos desplegados, +100 contribuciones anuales y 3 años de experiencia en control de versiones",
-    size: 1.0,
   },
   {
-    id: 5,
-    image: "/logosHabilidades/Studio.svg",
+    id: "5",
+    src: "/logosHabilidades/Studio.svg",
     title: "Google Workspace Studio",
     description: "Dominio en automatización de procesos y desarrollo de soluciones con Google Workspace Studio.",
-    size: 1.2,
   },
   {
-    id: 6,
-    image: "/logosHabilidades/unity.png",
+    id: "6",
+    src: "/logosHabilidades/unity.png",
     title: "Unity",
     description: "Experiencia enseñando habilidades en matemáticas, física y programación para Unity.",
-    size: 1.0,
   },
   {
-    id: 7,
-    image: "/logosHabilidades/googlecollab.webp",
+    id: "7",
+    src: "/logosHabilidades/googlecollab.webp",
     title: "Google Colab",
     description: "Experiencia en enseñanza y desarrollo de proyectos de ML, DL y ciencia de datos en Google Colab.",
-    size: 1.5,
   },
   {
-    id: 8,
-    image: "/logosHabilidades/streamlit.png",
+    id: "8",
+    src: "/logosHabilidades/streamlit.png",
     title: "Streamlit",
     description: "Experiencia desarrollando visualizaciones interactivas y aplicaciones web para proyectos de ciencia de datos con Streamlit.",
-    size: 1.2,
   },
   {
-    id: 9,
-    image: "/logosHabilidades/powerbi.webp",
+    id: "9",
+    src: "/logosHabilidades/powerbi.webp",
     title: "Power BI",
     description: "Competencia básica en el diseño e implementación de tableros de control.",
-    size: 1.1,
   },
   {
-    id: 10,
-    image: "/logosHabilidades/htmlcss.webp",
+    id: "10",
+    src: "/logosHabilidades/htmlcss.webp",
     title: "HTML y CSS",
     description: "Competencia básica en el desarrollo de páginas web y diseño de interfaces.",
-    size: 1.1,
   },
   {
-    id: 11,
-    image: "/logosHabilidades/wix.png",
+    id: "11",
+    src: "/logosHabilidades/wix.png",
     title: "Wix",
     description: "Competencia básica en el desarrollo de páginas web y diseño de interfaces con Wix.",
-    size: 1.1,
   },
   {
-    id: 12,
-    image: "/logosHabilidades/googleAiStudio.webp",
+    id: "12",
+    src: "/logosHabilidades/googleAiStudio.webp",
     title: "Google AI Studio",
     description: "Experiencia en el desarrollo de aplicaciones de IA y consumo de APIs con Google AI Studio.",
-    size: 1.3,
   },
   {
-    id: 13,
-    image: "/logosHabilidades/logodocker.png",
+    id: "13",
+    src: "/logosHabilidades/logodocker.png",
     title: "Docker",
     description: "Competencia básica en la creación y gestión de contenedores para aplicaciones y servicios.",
-    size: 1.1,
   },
   {
-    id: 14,
-    image: "/logosHabilidades/Pandas.svg",
+    id: "14",
+    src: "/logosHabilidades/Pandas.svg",
     title: "Pandas",
     description: "Amplia experiencia en el análisis y manipulación de datos con Pandas.",
-    size: 1.4,
   },
 ];
+
 
 
 export default function Home() {
@@ -307,7 +295,17 @@ export default function Home() {
               </p>
             </div>
 
-            <SphereTagCloud items={esferaItems} radius={6} />
+            <div className="flex justify-center items-center py-10 overflow-hidden">
+              <SphereImageGrid
+                images={esferaItems}
+                containerSize={550}
+                sphereRadius={210}
+                baseImageScale={0.14}
+                autoRotate={true}
+                autoRotateSpeed={0.25}
+                dragSensitivity={0.6}
+              />
+          </div>
           </section>
         </>
       ) : activeTab === "chatbot" ? (
