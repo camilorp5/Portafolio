@@ -7,9 +7,21 @@ export default function CssImageStacking() {
       <main className="bg-background">
         <div className="wrapper">
           <section className="text-foreground h-screen w-full bg-background grid place-content-center sticky top-0">
-            <div className="absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),gradient-to-bottom,#4f4f4f2e_1px,transparent_1px)] bg-size-[54px_54px] mask-[radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
+            {/* Fondo de Cuadrícula (Grid) Corregido */}
+            <div
+              className="absolute bottom-0 left-0 right-0 top-0 pointer-events-none"
+              style={{
+                backgroundImage: `
+                  linear-gradient(to right, rgba(0, 0, 0, 0.08) 1px, transparent 1px),
+                  linear-gradient(to bottom, rgba(0, 0, 0, 0.08) 1px, transparent 1px)
+                `,
+                backgroundSize: "54px 54px",
+                WebkitMaskImage: "radial-gradient(ellipse 60% 50% at 50% 0%, #000 70%, transparent 100%)",
+                maskImage: "radial-gradient(ellipse 60% 50% at 50% 0%, #000 70%, transparent 100%)",
+              }}
+            />
 
-            <h1 className="2xl:text-7xl text-5xl px-8 font-semibold text-center tracking-tight leading-[120%]">
+            <h1 className="2xl:text-7xl text-5xl px-8 font-semibold text-center tracking-tight leading-[120%] relative z-10">
               CSS Sticky Properties for <br /> Stacking Cards. Scroll down! 👇
             </h1>
           </section>
