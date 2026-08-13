@@ -98,7 +98,7 @@ export default function SphereImageGrid({
   dragSensitivity = 0.5,
   momentumDecay = 0.95,
   maxRotationSpeed = 5,
-  baseImageScale = 0.13,
+  baseImageScale = 0.08,
   perspective = 1000,
   autoRotate = true,
   autoRotateSpeed = 0.2,
@@ -203,7 +203,7 @@ export default function SphereImageGrid({
       // Escala de profundidad
       const depthScale = (worldPos.z + actualSphereRadius) / (2 * actualSphereRadius);
       const itemCustomSize = itemList[index]?.size || 1.0;
-      const scale = Math.max(0.4, (0.7 + depthScale * 0.5) * itemCustomSize);
+      const scale = Math.max(0.3, (0.4 + depthScale * 0.4) * (itemCustomSize * 0.8));
 
       return {
         ...worldPos,
