@@ -53,7 +53,7 @@ export const translations = {
         {
           title: "Chatbot Inteligente de Asesoría Estudiantil",
           description:
-            "Automatizó asesorías estudiantiles, reduciendo 80% del personal y tiempos, gestionando solicitudes, respuestas y registros personalizados.",
+            "Automatizó asesorías estudiantiles, redujo 80% de los tiempos, gestionó solicitudes, respuestas y registros personalizados.",
           tags: ["Python", "LangChain", "ChromaDB", "Api de Whatsapp"],
         },
         {
@@ -117,7 +117,7 @@ export const translations = {
       items: [
         {
           "title": "Intelligent Student Advising Chatbot",
-          "description": "Automated student advising by managing requests, responses, and personalized records, reducing staffing needs and response times by 80%.",
+          "description": "Automated student consultations, reduced processing times by 80%, and managed requests, responses, and personalized records.",
           "tags": ["Python", "LangChain", "ChromaDB", "WhatsApp API"]
         },
         {
@@ -178,7 +178,7 @@ export const translations = {
       items: [
         {
           "title": "Chatbot Inteligente para Assessoria Estudantil",
-          "description": "Automatizou a assessoria estudantil, gerenciando solicitações, respostas e registros personalizados, reduzindo em 80% a necessidade de pessoal e o tempo de atendimento.",
+          "description": "Automatizou consultas de alunos, reduziu os tempos de processamento em 80% e gerenciou solicitações, respostas e registros personalizados.",
           "tags": ["Python", "LangChain", "ChromaDB", "API do WhatsApp"]
         },
         {
@@ -235,7 +235,7 @@ export const faqData: FaqData = {
   rows: [
     {
       id: "row-1",
-      speed: "90s",
+      speed: "120s",
       direction: "left",
       faqItems: [
         {
@@ -302,7 +302,7 @@ export const faqData: FaqData = {
     },
     {
       id: "row-2",
-      speed: "100s",
+      speed: "120s",
       direction: "right",
       faqItems: [
         {

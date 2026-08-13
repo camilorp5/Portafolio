@@ -103,6 +103,27 @@ const esferaItems: SphereItem[] = [
     description: "Competencia básica en el desarrollo de páginas web y diseño de interfaces con Wix.",
     size: 1.1,
   },
+  {
+    id: 12,
+    image: "/logosHabilidades/googleAiStudio.webp",
+    title: "Google AI Studio",
+    description: "Experiencia en el desarrollo de aplicaciones de IA y consumo de APIs con Google AI Studio.",
+    size: 1.3,
+  },
+  {
+    id: 13,
+    image: "/logosHabilidades/logodocker.png",
+    title: "Docker",
+    description: "Competencia básica en la creación y gestión de contenedores para aplicaciones y servicios.",
+    size: 1.1,
+  },
+  {
+    id: 14,
+    image: "/logosHabilidades/Pandas.svg",
+    title: "Pandas",
+    description: "Amplia experiencia en el análisis y manipulación de datos con Pandas.",
+    size: 1.4,
+  },
 ];
 
 
