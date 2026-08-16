@@ -5,7 +5,7 @@ import { ReactLenis } from "lenis/react";
 const publications = [
   {
     title: "Sistema de Alerta Temprana - RedColsi",
-    description: "Publicación e investigación sobre alertas tempranas.",
+    description: "Publicación e investigación sobre alertas tempranas de deserción en el ITM.",
     src: "/publicaciones/images/redcolsi.png",
     file: "/publicaciones/documentos/redcolsi.pdf", // Cambia a la extensión real de tu archivo
     widthClass: "w-[55%]",
@@ -111,7 +111,7 @@ export default function CssImageStacking() {
 
         <footer className="group bg-background">
           <h1 className="text-[16vw] translate-y-20 leading-[100%] uppercase font-semibold text-center bg-gradient-to-r from-neutral-400 to-neutral-800 bg-clip-text text-transparent transition-all ease-linear">
-            ui-layout
+            Camilo Pérez AI
           </h1>
           <div className="bg-background h-40 relative z-10 grid place-content-center text-2xl rounded-tr-full rounded-tl-full"></div>
         </footer>

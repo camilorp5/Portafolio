@@ -145,13 +145,13 @@ const esferaItems: ImageData[] = [
   },
   {
     id: "20",
-    src: "/logosHabilidades/keras.png",
+    src: "/logosHabilidades/keras.webp",
     title: "Keras",
     description: "Experiencia en el desarrollo de modelos de machine learning y deep learning con Keras.",
   },
   {
     id: "21",
-    src: "/logosHabilidades/scikitlearn.png",
+    src: "/logosHabilidades/scikitlearn.webp",
     title: "Scikit-learn",
     description: "Experiencia en aprendizaje automático, preprocesamiento y evaluación de modelos predictivos con Scikit-learn.",
   },
