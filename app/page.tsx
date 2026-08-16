@@ -131,6 +131,30 @@ const esferaItems: ImageData[] = [
     title: "Google Cloud Console",
     description: "Experiencia en Google Cloud gestionando proyectos, cuentas de servicio, APIs, usuarios OAuth y más.",
   },
+  {
+    id: "18",
+    src: "/logosHabilidades/vercel.png",
+    title: "Vercel",
+    description: "He trabajado en Vercel para despliegue y gestión de aplicaciones y páginas web.",
+  },
+  {
+    id: "19",
+    src: "/logosHabilidades/cloudrun.png",
+    title: "Cloud Run",
+    description: "He trabajado en Cloud Run para despliegue y gestión de aplicaciones containerizadas.",
+  },
+  {
+    id: "20",
+    src: "/logosHabilidades/keras.png",
+    title: "Keras",
+    description: "Experiencia en el desarrollo de modelos de machine learning y deep learning con Keras.",
+  },
+  {
+    id: "21",
+    src: "/logosHabilidades/scikitlearn.png",
+    title: "Scikit-learn",
+    description: "Experiencia en aprendizaje automático, preprocesamiento y evaluación de modelos predictivos con Scikit-learn.",
+  },
 ];
 
 
