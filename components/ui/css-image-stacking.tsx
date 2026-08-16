@@ -22,7 +22,7 @@ export default function CssImageStacking() {
             />
 
             <h1 className="2xl:text-7xl text-5xl px-8 font-semibold text-center tracking-tight leading-[120%] relative z-10">
-              CSS Sticky Properties for <br /> Stacking Cards. Scroll down! 👇
+              Publicaciones investigativas y <br /> divulgativas sobre IA. Scroll down! 👇
             </h1>
           </section>
         </div>
@@ -32,8 +32,8 @@ export default function CssImageStacking() {
             <div className="sm:sticky sm:top-0 w-full">
               <figure className="w-full h-screen flex items-center justify-center">
                 <img
-                  src="https://images.unsplash.com/photo-1718969604981-de826f44ce15?w=1200&auto=format&fit=crop"
-                  alt="Stack Image 1"
+                  src="/publicaciones/redcolsi.png"
+                  alt="Sistema de Alerta temprana - RedColsi"
                   className="transition-all duration-300 h-[80%] w-[55%] align-bottom object-cover rounded-md"
                 />
               </figure>
