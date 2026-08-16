@@ -113,6 +113,24 @@ const esferaItems: ImageData[] = [
     title: "Pandas",
     description: "Amplia experiencia en el análisis y manipulación de datos con Pandas.",
   },
+  {
+    id: "15",
+    src: "/logosHabilidades/meta.png",
+    title: "Meta for Developers",
+    description: "Experiencia en el consumo de APIs de Meta for Developers y manejo de Whatsapp Business Platform.",
+  },
+  {
+    id: "16",
+    src: "/logosHabilidades/githubdesktop.webp",
+    title: "GitHub Desktop",
+    description: "Más de 2 años de experiencia en el uso de GitHub Desktop para control de versiones y colaboración en proyectos.",
+  },
+  {
+    id: "17",
+    src: "/logosHabilidades/googlecloud.png",
+    title: "Google Cloud Console",
+    description: "Experiencia en Google Cloud gestionando proyectos, cuentas de servicio, APIs, usuarios OAuth y más.",
+  },
 ];
 
 
