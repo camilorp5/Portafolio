@@ -51,15 +51,15 @@ export const translations = {
       subtitle: "Una muestra de mis últimos desarrollos en Inteligencia Artificial",
       items: [
         {
-          title: "Chatbot Inteligente de Asesoría Estudiantil",
+          title: "Chatbot Inteligente de asesoría estudiantil",
           description:
             "Automatizó asesorías estudiantiles, redujo 80% de los tiempos, gestionó solicitudes, respuestas y registros personalizados.",
           tags: ["Python", "LangChain", "ChromaDB", "Api de Whatsapp"],
         },
         {
-          title: "Agente Autónomo de Automatización",
+          title: "Automatización de procesos empresariales",
           description:
-            "Despliegue de agentes inteligentes que optimizan flujos de trabajo en entornos académicos.",
+            "Desarrollo de sistemas inteligentes con capacidades en visión artificial, automatización de tareas y envío masivo de correos.",
           tags: ["LangGraph", "Gemini", "Docker"],
         },
         {
@@ -77,6 +77,42 @@ export const translations = {
 
       ],
     },
+    skills: {
+      title: "Explora mis habilidades",
+      description: "Mueve la esfera en cualquier dirección para interactuar con las habilidades y tecnologías que domino.",
+    },
+    publicationsSection: {
+      heroTitleLine1: "Publicaciones investigativas y",
+      heroTitleLine2: "divulgativas sobre IA. ¡Desplázate hacia abajo! 👇",
+      downloadLabel: "Haz clic para descargar PDF ↓",
+      footer: "Camilo Pérez AI",
+      items: [
+        {
+          title: "Sistema de Alerta Temprana - RedColsi",
+          description: "Publicación e investigación sobre alertas tempranas de deserción en el ITM.",
+        },
+        {
+          title: "Investigación en IA 2",
+          description: "Análisis comparativo de modelos del lenguaje.",
+        },
+        {
+          title: "Investigación en IA 3",
+          description: "Avances en visión por computadora aplicados.",
+        },
+        {
+          title: "Investigación en IA 4",
+          description: "Impacto ético y divulgativo de la inteligencia artificial.",
+        },
+        {
+          title: "Investigación en IA 5",
+          description: "Redes neuronales y optimización de datos.",
+        },
+        {
+          title: "Investigación en IA 6",
+          description: "Futuro del aprendizaje profundo en la industria.",
+        },
+      ],
+    },
     placeholders: {
       publications: {
         title: "Publicaciones",
@@ -89,7 +125,11 @@ export const translations = {
       chatbot: {
         title: "Chatbot",
         description: "Aquí conectaremos el asistente personal basado en IA con el portafolio.",
-        inputPlaceholder: "Escribe tu pregunta..."
+        inputPlaceholder: "Escribe tu pregunta...",
+        emptyState: "Escribe una pregunta en el cuadro de abajo y presiona Enviar.",
+        sendButton: "Enviar",
+        sending: "Enviando...",
+        defaultError: "Lo siento, ocurrió un error al obtener la respuesta.",
       },
     },
   },
@@ -121,9 +161,9 @@ export const translations = {
           "tags": ["Python", "LangChain", "ChromaDB", "WhatsApp API"]
         },
         {
-          title: "Autonomous Automation Agent",
+          title: "Intelligent Business Process Automation",
           description:
-            "Deployment of intelligent agents that optimize workflows in academic environments.",
+            "Development of intelligent systems with capabilities in computer vision, task automation, and mass email sending.",
           tags: ["LangGraph", "Gemini", "Docker"],
         },
         {
@@ -135,6 +175,42 @@ export const translations = {
           "title": "Intelligent Chatbot for Personal Portfolio",
           "description": "RAG-based chatbot that answers questions about my experience, education, skills, and professional background.",
           "tags": ["Docker", "RAG", "LLM", "Gemini API", "Next.js", "Google Cloud Run"]
+        },
+      ],
+    },
+    skills: {
+      title: "Explore my skills",
+      description: "Move the sphere in any direction to interact with the skills and technologies I master.",
+    },
+    publicationsSection: {
+      heroTitleLine1: "Research and public-facing AI",
+      heroTitleLine2: "publications. Scroll down! 👇",
+      downloadLabel: "Click to download PDF ↓",
+      footer: "Camilo Pérez AI",
+      items: [
+        {
+          title: "Early Warning System - RedColsi",
+          description: "Research publication on early warning systems for dropout prevention at ITM.",
+        },
+        {
+          title: "AI Research 2",
+          description: "Comparative analysis of language models.",
+        },
+        {
+          title: "AI Research 3",
+          description: "Advances in applied computer vision.",
+        },
+        {
+          title: "AI Research 4",
+          description: "Ethical and public impact of artificial intelligence.",
+        },
+        {
+          title: "AI Research 5",
+          description: "Neural networks and data optimization.",
+        },
+        {
+          title: "AI Research 6",
+          description: "The future of deep learning in industry.",
         },
       ],
     },
@@ -150,7 +226,11 @@ export const translations = {
       chatbot: {
         title: "Chatbot",
         description: "This is where the personal AI assistant will be connected to the portfolio.",
-        inputPlaceholder: "Type your question..."
+        inputPlaceholder: "Type your question...",
+        emptyState: "Write a question in the box below and press Send.",
+        sendButton: "Send",
+        sending: "Sending...",
+        defaultError: "Sorry, there was an error getting the response.",
       },
     },
   },
@@ -199,6 +279,42 @@ export const translations = {
         },
       ],
     },
+    skills: {
+      title: "Explore minhas habilidades",
+      description: "Mova a esfera em qualquer direção para interagir com as habilidades e tecnologias que domino.",
+    },
+    publicationsSection: {
+      heroTitleLine1: "Publicações investigativas e",
+      heroTitleLine2: "divulgativas sobre IA. Role para baixo! 👇",
+      downloadLabel: "Clique para baixar o PDF ↓",
+      footer: "Camilo Pérez AI",
+      items: [
+        {
+          title: "Sistema de Alerta Precoce - RedColsi",
+          description: "Publicação e pesquisa sobre alertas precoces de evasão no ITM.",
+        },
+        {
+          title: "Pesquisa em IA 2",
+          description: "Análise comparativa de modelos de linguagem.",
+        },
+        {
+          title: "Pesquisa em IA 3",
+          description: "Avanços em visão computacional aplicada.",
+        },
+        {
+          title: "Pesquisa em IA 4",
+          description: "Impacto ético e divulgativo da inteligência artificial.",
+        },
+        {
+          title: "Pesquisa em IA 5",
+          description: "Redes neurais e otimização de dados.",
+        },
+        {
+          title: "Pesquisa em IA 6",
+          description: "O futuro do aprendizado profundo na indústria.",
+        },
+      ],
+    },
     placeholders: {
       publications: {
         title: "Publicações",
@@ -211,7 +327,11 @@ export const translations = {
       chatbot: {
         title: "Chatbot",
         description: "Aqui conectaremos o assistente pessoal baseado em IA ao portfólio.",
-        inputPlaceholder: "Digite sua pergunta..."
+        inputPlaceholder: "Digite sua pergunta...",
+        emptyState: "Escreva uma pergunta na caixa abaixo e pressione Enviar.",
+        sendButton: "Enviar",
+        sending: "Enviando...",
+        defaultError: "Desculpe, ocorreu um erro ao obter a resposta.",
       },
     },
   },

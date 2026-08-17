@@ -223,7 +223,7 @@ export default function Home() {
     } catch (err: any) {
         console.error("ERROR:", err);
         setError(err.message || "Error al comunicarse con la API.");
-        setMessages((m) => [...m, { sender: 'bot', text: 'Lo siento, ocurrió un error al obtener la respuesta.' }]);
+        setMessages((m) => [...m, { sender: 'bot', text: t.placeholders.chatbot.defaultError }]);
     } finally {
       setLoading(false);
     }
@@ -371,10 +371,10 @@ export default function Home() {
           <section className="mx-auto max-w-6xl px-6 pb-20 pt-10">
             <div className="mb-8 text-center">
               <h2 className="text-3xl font-bold tracking-tight text-slate-900">
-                Explora mis habilidades
+                {t.skills.title}
               </h2>
               <p className="mt-2 text-slate-500">
-                Mueve la esfera en cualquier dirección para interactuar con las habilidades y tecnologías que domino.
+                {t.skills.description}
               </p>
             </div>
 
@@ -403,7 +403,7 @@ export default function Home() {
             <div className="flex h-[60vh] flex-col gap-4">
               <div className="flex-1 overflow-y-auto rounded-lg border border-slate-100 p-4" id="chat-messages">
                 {messages.length === 0 ? (
-                  <p className="text-sm text-slate-400">Escribe una pregunta en el cuadro de abajo y presiona Enviar.</p>
+                  <p className="text-sm text-slate-400">{t.placeholders.chatbot.emptyState}</p>
                 ) : (
                   messages.map((m, idx) => (
                     <div key={idx} className={`mb-3 flex ${m.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
@@ -425,7 +425,7 @@ export default function Home() {
                   className="flex-1 rounded-xl border border-slate-200 px-4 py-2 text-sm outline-none focus:ring-2 focus:ring-blue-200"
                 />
                 <button type="submit" disabled={loading} className="rounded-xl bg-blue-700 px-4 py-2 text-white disabled:opacity-60">
-                  {loading ? 'Enviando...' : 'Enviar'}
+                  {loading ? t.placeholders.chatbot.sending : t.placeholders.chatbot.sendButton}
                 </button>
               </form>
               {error && <p className="mt-2 text-sm text-red-600">{error}</p>}
@@ -442,7 +442,7 @@ export default function Home() {
         </section>
       ) : activeTab === "publications" && (
         <section className="w-full relative">
-          <CssImageStacking />
+          <CssImageStacking language={language} />
         </section>
       )}
     </main>
