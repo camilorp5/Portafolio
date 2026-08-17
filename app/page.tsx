@@ -157,7 +157,23 @@ const esferaItems: ImageData[] = [
   },
 ];
 
-
+const socialLinks = [
+  {
+    name: "Gmail",
+    image: "/logos/gmail.svg",
+    href: "mailto:camilorp66@gmail.com",
+  },
+  {
+    name: "LinkedIn",
+    image: "/logos/linkedin.svg",
+    href: "https://www.linkedin.com/in/camilo-perez-cientifico-de-datos/",
+  },
+  {
+    name: "GitHub",
+    image: "/logos/github.svg",
+    href: "https://github.com/camilorp5",
+  },
+];
 
 export default function Home() {
   const [language, setLanguage] = useState<Language>("es");
@@ -165,6 +181,7 @@ export default function Home() {
 
   const t = translations[language];
   const cvHref = getCvHref(language);
+
 
   const [messages, setMessages] = useState<Array<{sender: 'user' | 'bot'; text: string}>>([]);
   const [question, setQuestion] = useState("");
@@ -215,7 +232,29 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-slate-50 text-slate-900 font-sans selection:bg-blue-500 selection:text-white">
       <header className="sticky top-0 z-30 border-b border-slate-200/80 bg-white/90 backdrop-blur">
-        <div className="mx-auto flex max-w-6xl flex-col gap-3 px-6 py-4 sm:flex-row sm:items-center sm:justify-end">
+        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+
+          {/* LOGOS SOCIALES */}
+          <div className="flex items-center gap-3">
+            {socialLinks.map((social) => (
+              <a
+                key={social.name}
+                href={social.href}
+                target={social.name === "Gmail" ? undefined : "_blank"}
+                rel={social.name === "Gmail" ? undefined : "noopener noreferrer"}
+                aria-label={social.name}
+                className="flex h-10 w-10 items-center justify-center rounded-full transition-all hover:scale-110 hover:bg-slate-100"
+              >
+                <img
+                  src={social.image}
+                  alt={social.name}
+                  className="h-6 w-6 object-contain"
+                />
+              </a>
+            ))}
+          </div>
+
+          
           <div className="flex flex-wrap items-center justify-end gap-2 sm:gap-3">
             <label className="sr-only" htmlFor="language-selector">
               Select language
